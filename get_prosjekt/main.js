@@ -70,6 +70,7 @@ const explorer_button = document.getElementById("explorer_button")
 const tom_button = document.getElementById("tom_button")
 const screenclick = document.getElementById("screenclick")
 const birdbutton = document.getElementById("birdbutton")
+const main_menu_button = document.getElementById("main_menu_button")
 
 function background() {
     ctx.drawImage(bg_image, pos_left, pos_top, max_width, max_height)
@@ -428,11 +429,6 @@ let character_min_pos_y = game_pos_y + character_size_y
 
 const jump_physics = 125
 
-let is_bird_visible = false
-
-birdbutton.addEventListener("click", (e) => {is_bird_visible = !is_bird_visible;
-    e.currentTarget.blur() })
-
 function jump() {
     document.addEventListener('keydown', logKey);
     function logKey(e) {
@@ -450,51 +446,70 @@ function jump() {
 }
 jump()
 
-function show_bird(){
-    if (is_bird_visible) {
-    ctx.fillRect(game_pos_x, game_pos_y, game_size_x, game_size_y)
+let is_bird_menu_visible = false
+let is_game_visible = false
 
-    ctx.drawImage(window1, game_pos_x - 100, game_pos_y - 100, game_size_x + 200, game_size_y + 170)
-    text_style_3("Flappy Bird - It's Always Sunny in Philadelphia Version", game_pos_x + 10, game_pos_y - 10)
-    ctx.drawImage(minimize_image, game_pos_x + 915, game_pos_y - 33, 25, 25)
-    ctx.drawImage(maximize_image, game_pos_x + 945, game_pos_y - 33, 25, 25)
-    ctx.drawImage(close_image, game_pos_x + 975, game_pos_y - 33, 25, 25)
+main_menu_button.style.display = "none"
 
-    ctx.drawImage(game_main_menu_image,
-        game_pos_x,
-        game_pos_y,
-        game_size_x,
-        game_size_y)
 
-    ctx.drawImage(flappy_image,
-        game_pos_x -180,
-        game_pos_y -290,
-        game_size_x,
-        game_size_y)
+birdbutton.addEventListener("click", (e) => {is_bird_menu_visible = !is_bird_menu_visible;
+    e.currentTarget.blur() })
 
-    ctx.drawImage(sunny_logo_image,
-        game_pos_x + 300,
-        game_pos_y + 170,
-        700,
-        300)
+/* main_menu_button.addEventListener("click", (e) => {is_game_visible = !is_game_visible;
+    e.currentTarget.blur() }) */
 
-    ctx.drawImage(game_bird_image,
-        character_position_x,
-        character_position_y,
-        character_size_x,
-        character_size_y)
+function show_bird()    {
 
-    function gravity() {
-        if (character_position_y >= character_max_pos_y) {
+    if (is_bird_menu_visible) {
+        /* main_menu_button.style.display = "block" */
+
+        ctx.fillRect(game_pos_x, game_pos_y, game_size_x, game_size_y)
+
+        ctx.drawImage(window1, game_pos_x - 100, game_pos_y - 100, game_size_x + 200, game_size_y + 170)
+        text_style_3("Flappy Bird - It's Always Sunny in Philadelphia Version", game_pos_x + 10, game_pos_y - 10)
+        ctx.drawImage(minimize_image, game_pos_x + 915, game_pos_y - 33, 25, 25)
+        ctx.drawImage(maximize_image, game_pos_x + 945, game_pos_y - 33, 25, 25)
+        ctx.drawImage(close_image, game_pos_x + 975, game_pos_y - 33, 25, 25)
+
+        ctx.drawImage(game_main_menu_image,
+            game_pos_x,
+            game_pos_y,
+            game_size_x,
+            game_size_y)
+
+        ctx.drawImage(flappy_image,
+            game_pos_x -180,
+            game_pos_y -290,
+            game_size_x,
+            game_size_y)
+
+        ctx.drawImage(sunny_logo_image,
+            game_pos_x + 300,
+            game_pos_y + 170,
+            700,
+            300)
+
+        ctx.drawImage(game_bird_image,
+            character_position_x,
+            character_position_y,
+            character_size_x,
+            character_size_y)
+
+        function gravity() {
+            if (character_position_y >= character_max_pos_y) {
+            }
+                
+            if (character_position_y < character_max_pos_y) {
+            character_position_y += game_speed
+            }
         }
-            
-        if (character_position_y < character_max_pos_y) {
-        character_position_y += game_speed
-        }
+        gravity()
+
+/*     if (is_bird_menu_visible == !is_bird_menu_visible) {
+        main_menu_button.style.display = "none"
+    } */
+
     }
-
-gravity()
-}
 }
 
 const fps_60 = 1000 / 60
@@ -556,7 +571,6 @@ tiktok_click()
 explorer_click()
 tom_click()
 screensaver_click()
-game_click()
 })
 
 
