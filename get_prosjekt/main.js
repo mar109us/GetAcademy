@@ -400,53 +400,60 @@ function screen_clicked() {
 }
 
 
-const game_speed = 10
+    let game_speed = 5
 
-const game_pos_x = 800
-const game_pos_y = 300
-const game_size_x = 1000
-const game_size_y = 800
+    const game_pos_x = 800
+    const game_pos_y = 300
 
-const character_size_x = 150
-const character_size_y = 110
+    const game_size_x = 1000
+    const game_size_y = 800
 
-let character_offset_x = 20
-let character_offset_y = 20
-let character_position_y = 0
+    const character_size_x = 150
+    const character_size_y = 110
 
-var character_max_pos_y = game_size_y - character_size_y
+    let character_offset_x = 200
+    let character_offset_y = 100
 
-function gravity() {
+    let character_position_x = game_pos_x + character_offset_x
+    let character_position_y = game_pos_y + character_offset_y
 
-    if (character_offset_y >= character_max_pos_y) {
-        console.log(game_speed)
-        }
-        
-    else {
-    character_offset_y += game_speed
-    console.log(game_speed)
-    }
-
-    document.addEventListener('keydown', logKey);
-
-    function logKey(e) {
-        if (`${e.code}` === "Space") {
-            character_offset_y -= 1
-            console.log(game_speed)
-        }
-    }
-   
-}
-
-
+    let character_max_pos_y = game_pos_y + game_size_y - character_size_y
 
 function flappy_window() {
+
     ctx.fillRect(game_pos_x, game_pos_y, game_size_x, game_size_y)
     ctx.drawImage(game_bird_image,
-        game_pos_x + character_offset_x,
-        game_pos_y + character_offset_y,
+        character_position_x,
+        character_position_y,
         character_size_x,
         character_size_y)
+
+    function jump() {
+        document.addEventListener('keydown', logKey);
+        function logKey(e) {
+            if (`${e.code}` === "Space") {
+                character_position_y -= game_speed
+                console.log("whsadgk")
+            }
+        }
+
+    }
+    jump()
+
+    function gravity() {
+        if (character_position_y >= character_max_pos_y) {
+            game_speed = 0
+        }
+            
+        if (character_position_y <= character_max_pos_y) {
+        character_position_y += game_speed
+        
+
+        }
+    }
+
+
+gravity()
 
 
 
@@ -491,6 +498,7 @@ function update(){
     }
 
     if (screensaver_timer < screensaver_set_init ) {
+        
         ctx.resetTransform();
         ui_visibility.style.visibility = "visible"
         screenclick_visibility.style.visibility = "hidden"
@@ -502,15 +510,15 @@ function update(){
         show_tiktok()
 
         flappy_window()
-        gravity()
+
     }
+
 }
 
 tiktok_click()
 explorer_click()
 tom_click()
 screensaver_click()
-
 })
 
 
