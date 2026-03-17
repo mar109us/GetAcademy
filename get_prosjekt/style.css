@@ -133,8 +133,8 @@ font-size: 20px;
 color: rgb(224, 183, 19); 
 border: 3px solid rgb(255, 0, 0); 
 border-radius: 20px; 
-top: 40%;
-left: 33%;
+top: 41%;
+left: 32%;
 cursor: pointer;
 position: fixed;
 display: block;
@@ -142,9 +142,9 @@ width: auto;
 height: auto;
 z-index: 1;
 filter: drop-shadow(rgb(53, 53, 53) 5px 5px 5px);
-padding-top: 2%;
-padding-left: 1%;
+padding-top: 1%;
+padding-left: 2%;
 padding-right: 1%;
-padding-bottom: 5%;
+padding-bottom: 0%;
 }
 
