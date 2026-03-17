@@ -458,10 +458,10 @@ birdbutton.addEventListener("click", (e) => {is_bird_menu_visible = !is_bird_men
 /* main_menu_button.addEventListener("click", (e) => {is_game_visible = !is_game_visible;
     e.currentTarget.blur() }) */
 
-function show_bird()    {
+function show_bird() {
 
     if (is_bird_menu_visible) {
-        /* main_menu_button.style.display = "block" */
+        main_menu_button.style.display = "block"
 
         ctx.fillRect(game_pos_x, game_pos_y, game_size_x, game_size_y)
 
@@ -472,28 +472,28 @@ function show_bird()    {
         ctx.drawImage(close_image, game_pos_x + 975, game_pos_y - 33, 25, 25)
 
         ctx.drawImage(game_main_menu_image,
-            game_pos_x,
-            game_pos_y,
-            game_size_x,
-            game_size_y)
+        game_pos_x,
+        game_pos_y,
+        game_size_x,
+        game_size_y)
 
         ctx.drawImage(flappy_image,
-            game_pos_x -180,
-            game_pos_y -290,
-            game_size_x,
-            game_size_y)
+        game_pos_x -180,
+        game_pos_y -290,
+        game_size_x,
+        game_size_y)
 
         ctx.drawImage(sunny_logo_image,
-            game_pos_x + 300,
-            game_pos_y + 170,
-            700,
-            300)
+        game_pos_x + 300,
+        game_pos_y + 170,
+        700,
+        300)
 
         ctx.drawImage(game_bird_image,
-            character_position_x,
-            character_position_y,
-            character_size_x,
-            character_size_y)
+        character_position_x,
+        character_position_y,
+        character_size_x,
+        character_size_y)
 
         function gravity() {
             if (character_position_y >= character_max_pos_y) {
@@ -502,15 +502,17 @@ function show_bird()    {
             if (character_position_y < character_max_pos_y) {
             character_position_y += game_speed
             }
-        }
+        }   
         gravity()
-
-/*     if (is_bird_menu_visible == !is_bird_menu_visible) {
-        main_menu_button.style.display = "none"
-    } */
-
     }
-}
+    
+    else {
+        main_menu_button.style.display = "none"
+    } 
+
+ }
+
+
 
 const fps_60 = 1000 / 60
 setInterval(update, fps_60)
