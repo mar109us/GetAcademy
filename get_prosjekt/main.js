@@ -506,7 +506,10 @@ let mouse_y = 0
 window.onmousemove = function(e) {
     mouse_x = e.clientX;
     mouse_y = e.clientY;
-    screensaver_timer = 0
+    wallpaper_counter = 0
+    screensaver_timer = + 1
+    elapsed_ms = 0
+    clicked_screensaver = false
 }
 
 document.addEventListener('keydown', logKey);
