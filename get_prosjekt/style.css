@@ -52,17 +52,22 @@ body {
 
 #tom_button img{
     top: 1%;
-    left: 8%;
+    left: 10%;
 }
 
 #wow_button img{
     top: 15%;
-    left: 8%;
+    left: 10%;
 }
 
 #cs_button img{
     top: 29%;
-    left: 8%;
+    left: 10%;
+}
+
+#birdbutton img{
+    top: 43%;
+    left: 10%;
 }
 
 

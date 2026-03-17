@@ -57,6 +57,9 @@ const youtube_image = document.getElementById("youtube")
 const lightbar_image = document.getElementById("lightbar")
 const virus_image = document.getElementById("virus")
 const game_bird_image = document.getElementById("game_bird")
+const game_main_menu_image = document.getElementById("game_main_menu")
+const sunny_logo_image = document.getElementById("sunny_logo")
+const flappy_image = document.getElementById("flappy")
 
 //const  = document.getElementById("")
 
@@ -66,6 +69,7 @@ const tiktok_button = document.getElementById("tiktok_button")
 const explorer_button = document.getElementById("explorer_button")
 const tom_button = document.getElementById("tom_button")
 const screenclick = document.getElementById("screenclick")
+const birdbutton = document.getElementById("birdbutton")
 
 function background() {
     ctx.drawImage(bg_image, pos_left, pos_top, max_width, max_height)
@@ -390,6 +394,8 @@ function screensaver_click() {
     screenclick.addEventListener("click", () => {clicked_screensaver = !clicked_screensaver})
 }
 
+
+
 function screen_clicked() {
     if (clicked_screensaver) {
         wallpaper_counter = 0
@@ -399,55 +405,97 @@ function screen_clicked() {
     }
 }
 
-
-/* 
-let game_speed = 1
+let game_speed = 5
 
 const game_pos_x = 800
 const game_pos_y = 300
+
 const game_size_x = 1000
 const game_size_y = 800
 
 const character_size_x = 150
 const character_size_y = 110
 
-let character_offset_x = 20
-let character_offset_y = 20
-let character_position_y = 0
+let character_offset_x = 200
+let character_offset_y = 100
 
-var character_max_pos_y = game_size_y - character_size_y
+let character_position_x = game_pos_x + character_offset_x
+let character_position_y = game_pos_y + character_offset_y
 
-function gravity() {
+let character_max_pos_y = game_pos_y + game_size_y - character_size_y
 
-    character_offset_y += game_speed
+let character_min_pos_y = game_pos_y + character_size_y
 
+const jump_physics = 125
+
+let is_bird_visible = false
+
+birdbutton.addEventListener("click", (e) => {is_bird_visible = !is_bird_visible;
+    e.currentTarget.blur() })
+
+function jump() {
     document.addEventListener('keydown', logKey);
-
     function logKey(e) {
         if (`${e.code}` === "Space") {
-            character_offset_y game_speed
+            if (character_min_pos_y >= character_position_y){
+            }
+
+            else {
+                character_position_y -= jump_physics
+                console.log("whsadgk")
+            }
         }
     }
-   
+
 }
+jump()
 
-
-function flappy_window() {
+function show_bird(){
+    if (is_bird_visible) {
     ctx.fillRect(game_pos_x, game_pos_y, game_size_x, game_size_y)
+
+    ctx.drawImage(window1, game_pos_x - 100, game_pos_y - 100, game_size_x + 200, game_size_y + 170)
+    text_style_3("Flappy Bird - It's Always Sunny in Philadelphia Version", game_pos_x + 10, game_pos_y - 10)
+    ctx.drawImage(minimize_image, game_pos_x + 915, game_pos_y - 33, 25, 25)
+    ctx.drawImage(maximize_image, game_pos_x + 945, game_pos_y - 33, 25, 25)
+    ctx.drawImage(close_image, game_pos_x + 975, game_pos_y - 33, 25, 25)
+
+    ctx.drawImage(game_main_menu_image,
+        game_pos_x,
+        game_pos_y,
+        game_size_x,
+        game_size_y)
+
+    ctx.drawImage(flappy_image,
+        game_pos_x -180,
+        game_pos_y -290,
+        game_size_x,
+        game_size_y)
+
+    ctx.drawImage(sunny_logo_image,
+        game_pos_x + 300,
+        game_pos_y + 170,
+        700,
+        300)
+
     ctx.drawImage(game_bird_image,
-        game_pos_x + character_offset_x,
-        game_pos_y + character_offset_y,
+        character_position_x,
+        character_position_y,
         character_size_x,
         character_size_y)
 
-    if (character_offset_y == character_max_pos_y) {
+    function gravity() {
+        if (character_position_y >= character_max_pos_y) {
+        }
+            
+        if (character_position_y < character_max_pos_y) {
+        character_position_y += game_speed
+        }
     }
 
-} */
-
-
-
-
+gravity()
+}
+}
 
 const fps_60 = 1000 / 60
 setInterval(update, fps_60)
@@ -488,6 +536,7 @@ function update(){
     }
 
     if (screensaver_timer < screensaver_set_init ) {
+        
         ctx.resetTransform();
         ui_visibility.style.visibility = "visible"
         screenclick_visibility.style.visibility = "hidden"
@@ -498,16 +547,16 @@ function update(){
         show_tom()
         show_tiktok()
 
-        flappy_window()
-        gravity()
+        show_bird()
     }
+
 }
 
 tiktok_click()
 explorer_click()
 tom_click()
 screensaver_click()
-
+game_click()
 })
 
 
