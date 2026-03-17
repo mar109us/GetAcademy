@@ -419,6 +419,30 @@ function screen_clicked() {
 
     let character_max_pos_y = game_pos_y + game_size_y - character_size_y
 
+    let character_min_pos_y = game_pos_y + character_size_y
+
+
+    const jump_physics = 150
+
+    function jump() {
+        document.addEventListener('keydown', logKey);
+        function logKey(e) {
+            if (`${e.code}` === "Space") {
+                if (character_min_pos_y >= character_position_y){
+                }
+
+                else {
+                    character_position_y -= jump_physics
+                    console.log("whsadgk")
+                }
+            }
+        }
+
+    }
+    jump()
+
+
+
 function flappy_window() {
 
     ctx.fillRect(game_pos_x, game_pos_y, game_size_x, game_size_y)
@@ -428,37 +452,25 @@ function flappy_window() {
         character_size_x,
         character_size_y)
 
-    function jump() {
-        document.addEventListener('keydown', logKey);
-        function logKey(e) {
-            if (`${e.code}` === "Space") {
-                character_position_y -= game_speed
-                console.log("whsadgk")
-            }
-        }
 
-    }
-    jump()
 
     function gravity() {
         if (character_position_y >= character_max_pos_y) {
-            game_speed = 0
         }
             
-        if (character_position_y <= character_max_pos_y) {
+        if (character_position_y < character_max_pos_y) {
         character_position_y += game_speed
         
 
         }
     }
 
-
 gravity()
 
 
 
-}
 
+}
 
 
 
