@@ -400,8 +400,7 @@ function screen_clicked() {
 }
 
 
-/* 
-let game_speed = 1
+const game_speed = 10
 
 const game_pos_x = 800
 const game_pos_y = 300
@@ -419,17 +418,26 @@ var character_max_pos_y = game_size_y - character_size_y
 
 function gravity() {
 
+    if (character_offset_y >= character_max_pos_y) {
+        console.log(game_speed)
+        }
+        
+    else {
     character_offset_y += game_speed
+    console.log(game_speed)
+    }
 
     document.addEventListener('keydown', logKey);
 
     function logKey(e) {
         if (`${e.code}` === "Space") {
-            character_offset_y game_speed
+            character_offset_y -= 1
+            console.log(game_speed)
         }
     }
    
 }
+
 
 
 function flappy_window() {
@@ -440,11 +448,9 @@ function flappy_window() {
         character_size_x,
         character_size_y)
 
-    if (character_offset_y == character_max_pos_y) {
-    }
 
-} */
 
+}
 
 
 
