@@ -449,7 +449,14 @@ jump()
 let is_bird_menu_visible = false
 let is_game_visible = false
 
-main_menu_button.style.display = "none"
+function show_bird_menu() {
+    main_menu_button.style.display = "block"
+}
+
+function hide_bird_menu() {
+    main_menu_button.style.display = "none"
+}
+
 
 
 birdbutton.addEventListener("click", (e) => {is_bird_menu_visible = !is_bird_menu_visible;
@@ -461,7 +468,8 @@ birdbutton.addEventListener("click", (e) => {is_bird_menu_visible = !is_bird_men
 function show_bird() {
 
     if (is_bird_menu_visible) {
-        main_menu_button.style.display = "block"
+        
+        show_bird_menu()
 
         ctx.fillRect(game_pos_x, game_pos_y, game_size_x, game_size_y)
 
@@ -505,9 +513,9 @@ function show_bird() {
         }   
         gravity()
     }
-    
+
     else {
-        main_menu_button.style.display = "none"
+        hide_bird_menu()
     } 
 
  }
