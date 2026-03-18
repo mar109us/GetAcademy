@@ -558,6 +558,7 @@ function update(){
         screenclick_visibility.style.visibility = "visible"
         rotate_timer += fps_60
         wallpaper_counter++
+        hide_bird_menu()
     }
 
     if (screensaver_timer < screensaver_set_init ) {
