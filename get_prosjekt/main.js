@@ -551,29 +551,33 @@ function update(){
     elapsed_ms += fps_60
     screensaver_timer += fps_60
 
-    if (screensaver_timer > screensaver_set_init) {
-        screensaver_loop()
-        screen_clicked()
-        ui_visibility.style.visibility = "hidden"
-        screenclick_visibility.style.visibility = "visible"
-        rotate_timer += fps_60
-        wallpaper_counter++
-        hide_bird_menu()
-    }
 
-    if (screensaver_timer < screensaver_set_init ) {
-        
-        ctx.resetTransform();
+
+    if (screensaver_timer < screensaver_set_init ) { 
+        ctx.resetTransform()
+
         ui_visibility.style.visibility = "visible"
         screenclick_visibility.style.visibility = "hidden"
+
         background()
         taskbar()
         clock()
         show_explorer()
         show_tom()
         show_tiktok()
-
         show_bird()
+    }
+
+    if (screensaver_timer > screensaver_set_init) {
+        screensaver_loop()
+        screen_clicked()
+
+        ui_visibility.style.visibility = "hidden"
+        screenclick_visibility.style.visibility = "visible"
+        rotate_timer += fps_60
+        wallpaper_counter++
+
+        hide_bird_menu()
     }
 
 }
