@@ -481,6 +481,9 @@ function hide_bird_menu() {
 function bird_game_items() {
     if (hide_bird_game_items) return
 
+    ctx.fillStyle = `rgb(137, 186, 221)`
+    ctx.fillRect( game_pos_x, game_pos_y, game_size_x, game_size_y)
+
     ctx.drawImage(game_bird_image,
     character_position_x,
     character_position_y,
