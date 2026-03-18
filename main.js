@@ -70,7 +70,7 @@ const explorer_button = document.getElementById("explorer_button")
 const tom_button = document.getElementById("tom_button")
 const screenclick = document.getElementById("screenclick")
 const birdbutton = document.getElementById("birdbutton")
-const main_menu_button = document.getElementById("main_menu_button")
+const bird_play_button = document.getElementById("main_menu_button")
 
 function background() {
     ctx.drawImage(bg_image, pos_left, pos_top, max_width, max_height)
@@ -394,7 +394,39 @@ function screensaver_loop() {
     cube_pos_y += cube_y_pos_speed
 }
 
+
+
+
+
+
+
+
+
+
+
+function bird_desktop_button_click() {
+birdbutton.addEventListener("click", (e) => {bird_desktop_clicked = !bird_desktop_clicked;
+    e.currentTarget.blur() })
+}
+
+
+function bird_play_button_click() {
+bird_play_button.addEventListener("click", (e) => {bird_play_clicked = !bird_play_clicked;
+    e.currentTarget.blur() })
+}
+
+ function hide_bird_menu() {
+    bird_play_button.style.display = "none"
+}
+
+function show_bird_menu() {
+    bird_play_button.style.display = "block"
+}  
+
+
 let game_speed = 5
+
+const jump_physics = 125
 
 const game_pos_x = 800
 const game_pos_y = 300
@@ -415,100 +447,88 @@ let character_max_pos_y = game_pos_y + game_size_y - character_size_y
 
 let character_min_pos_y = game_pos_y + character_size_y
 
-const jump_physics = 125
+let hide_bird_menu_items = false
 
-function jump() {
-    document.addEventListener('keydown', logKey);
-    function logKey(e) {
-        if (`${e.code}` === "Space") {
-            if (character_min_pos_y >= character_position_y){
-            }
-
-            else {
-                character_position_y -= jump_physics
-                console.log("whsadgk")
-            }
-        }
-    }
-
-}
-jump()
+let hide_bird_game_items = false
 
 let bird_desktop_clicked = false
+
 let bird_play_clicked = false
 
-function show_bird_menu() {
-    main_menu_button.style.display = "block"
-}
+function show_bird() {
 
-function show_bird_menu_items() {
-    if (hide_bird_menu_items) return
+    function jump() {
+        document.addEventListener('keydown', logKey)
 
-    ctx.drawImage(game_main_menu_image,
-    game_pos_x,
-    game_pos_y,
-    game_size_x,
-    game_size_y)
+        function logKey(e) {
+            if (`${e.code}` === "Space") {
 
-    ctx.drawImage(flappy_image,
-    game_pos_x -180,
-    game_pos_y -290,
-    game_size_x,
-    game_size_y)
+                if (character_min_pos_y >= character_position_y) {
+                    
+                }
 
-    ctx.drawImage(sunny_logo_image,
-    game_pos_x + 300,
-    game_pos_y + 170,
-    700,
-    300)
-}
+                else {
+                    character_position_y -= jump_physics
+                }
+            }
+            }
 
-birdbutton.addEventListener("click", (e) => {bird_desktop_clicked = !bird_desktop_clicked;
-    e.currentTarget.blur() })
+    }
+    jump()
 
-main_menu_button.addEventListener("click", (e) => {bird_play_clicked = !bird_play_clicked;
-    e.currentTarget.blur() })
+    function show_bird_menu_items() {
+        if (hide_bird_menu_items) return
 
-function show_bird_window() {
+        ctx.drawImage(game_main_menu_image,
+        game_pos_x,
+        game_pos_y,
+        game_size_x,
+        game_size_y)
+
+        ctx.drawImage(flappy_image,
+        game_pos_x -180,
+        game_pos_y -290,
+        game_size_x,
+        game_size_y)
+
+        ctx.drawImage(sunny_logo_image,
+        game_pos_x + 300,
+        game_pos_y + 170,
+        700,
+        300)
+    }
+
+    function bird_game_items() {
+        if (hide_bird_game_items) return
+
+        ctx.fillStyle = `rgb(137, 186, 221)`
+        ctx.fillRect( game_pos_x, game_pos_y, game_size_x, game_size_y)
+
+        ctx.drawImage(game_bird_image,
+        character_position_x,
+        character_position_y,
+        character_size_x,
+        character_size_y)
+
+        function gravity() {
+
+            if (character_position_y >= character_max_pos_y) {
+            }
+                
+            if (character_position_y < character_max_pos_y) {
+            character_position_y += game_speed
+            }
+        }
+        gravity()
+    }
+
+    function show_bird_window() {
     ctx.drawImage(window1, game_pos_x - 100, game_pos_y - 100, game_size_x + 200, game_size_y + 170)
     text_style_3("Flappy Bird - It's Always Sunny in Philadelphia Version", game_pos_x + 10, game_pos_y - 10)
     ctx.drawImage(minimize_image, game_pos_x + 915, game_pos_y - 33, 25, 25)
     ctx.drawImage(maximize_image, game_pos_x + 945, game_pos_y - 33, 25, 25)
     ctx.drawImage(close_image, game_pos_x + 975, game_pos_y - 33, 25, 25)
-}
-
-function hide_bird_menu() {
-    main_menu_button.style.display = "none"
-}
-
-function bird_game_items() {
-    if (hide_bird_game_items) return
-
-    ctx.fillStyle = `rgb(137, 186, 221)`
-    ctx.fillRect( game_pos_x, game_pos_y, game_size_x, game_size_y)
-
-    ctx.drawImage(game_bird_image,
-    character_position_x,
-    character_position_y,
-    character_size_x,
-    character_size_y)
-
-    function gravity() {
-        if (character_position_y >= character_max_pos_y) {
-        }
-            
-        if (character_position_y < character_max_pos_y) {
-        character_position_y += game_speed
-        }
     }
-    gravity()
-}
-
-var hide_bird_menu_items = false
-
-var hide_bird_game_items = false
-
-function show_bird() {
 
     if (bird_desktop_clicked) {
         show_bird_menu()
@@ -531,6 +551,7 @@ function show_bird() {
         hide_bird_menu_items = false
     }
 }
+
 
 const fps_60 = 1000 / 60
 setInterval(update, fps_60)
@@ -600,6 +621,7 @@ function update(){
 tiktok_click()
 explorer_click()
 tom_click()
+
 screensaver_click()
 hide_bird_menu()
 })
