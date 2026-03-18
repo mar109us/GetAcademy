@@ -202,7 +202,7 @@ const screensaver_set_minutes = 5
 let screensaver_start_calc = screensaver_set_minutes * 60 * 1000
 let screensaver_set_init = screensaver_start_calc
 
-let clicked_screensaver = false
+let screensaver_active = false
 
 //  size speed
 const set_cube_x_size_speed = 1000
@@ -391,20 +391,7 @@ function screensaver_loop() {
     cube_pos_y += cube_y_pos_speed
 }
 
-function screensaver_click() {
-    screenclick.addEventListener("click", () => {clicked_screensaver = !clicked_screensaver})
-}
 
-
-
-function screen_clicked() {
-    if (clicked_screensaver) {
-        wallpaper_counter = 0
-        screensaver_timer = + 1
-        elapsed_ms = 0
-        clicked_screensaver = false
-    }
-}
 
 let game_speed = 5
 
@@ -446,93 +433,133 @@ function jump() {
 }
 jump()
 
-let is_bird_menu_visible = false
-let is_game_visible = false
+let bird_desktop_clicked = false
+let bird_play_clicked = false
 
-main_menu_button.style.display = "none"
+function show_bird_menu() {
+    main_menu_button.style.display = "block"
+}
 
+function show_bird_menu_items() {
+    if (hide_bird_menu_items) return
 
-birdbutton.addEventListener("click", (e) => {is_bird_menu_visible = !is_bird_menu_visible;
+    ctx.drawImage(game_main_menu_image,
+    game_pos_x,
+    game_pos_y,
+    game_size_x,
+    game_size_y)
+
+    ctx.drawImage(flappy_image,
+    game_pos_x -180,
+    game_pos_y -290,
+    game_size_x,
+    game_size_y)
+
+    ctx.drawImage(sunny_logo_image,
+    game_pos_x + 300,
+    game_pos_y + 170,
+    700,
+    300)
+}
+
+birdbutton.addEventListener("click", (e) => {bird_desktop_clicked = !bird_desktop_clicked;
     e.currentTarget.blur() })
 
-/* main_menu_button.addEventListener("click", (e) => {is_game_visible = !is_game_visible;
-    e.currentTarget.blur() }) */
+main_menu_button.addEventListener("click", (e) => {bird_play_clicked = !bird_play_clicked;
+    e.currentTarget.blur() })
 
-function show_bird()    {
+function show_bird_window() {
+    ctx.drawImage(window1, game_pos_x - 100, game_pos_y - 100, game_size_x + 200, game_size_y + 170)
+    text_style_3("Flappy Bird - It's Always Sunny in Philadelphia Version", game_pos_x + 10, game_pos_y - 10)
+    ctx.drawImage(minimize_image, game_pos_x + 915, game_pos_y - 33, 25, 25)
+    ctx.drawImage(maximize_image, game_pos_x + 945, game_pos_y - 33, 25, 25)
+    ctx.drawImage(close_image, game_pos_x + 975, game_pos_y - 33, 25, 25)
+}
 
-    if (is_bird_menu_visible) {
-        /* main_menu_button.style.display = "block" */
+function hide_bird_menu() {
+    main_menu_button.style.display = "none"
+}
 
-        ctx.fillRect(game_pos_x, game_pos_y, game_size_x, game_size_y)
+function bird_game_items() {
+    if (hide_bird_game_items) return
 
-        ctx.drawImage(window1, game_pos_x - 100, game_pos_y - 100, game_size_x + 200, game_size_y + 170)
-        text_style_3("Flappy Bird - It's Always Sunny in Philadelphia Version", game_pos_x + 10, game_pos_y - 10)
-        ctx.drawImage(minimize_image, game_pos_x + 915, game_pos_y - 33, 25, 25)
-        ctx.drawImage(maximize_image, game_pos_x + 945, game_pos_y - 33, 25, 25)
-        ctx.drawImage(close_image, game_pos_x + 975, game_pos_y - 33, 25, 25)
+    ctx.drawImage(game_bird_image,
+    character_position_x,
+    character_position_y,
+    character_size_x,
+    character_size_y)
 
-        ctx.drawImage(game_main_menu_image,
-            game_pos_x,
-            game_pos_y,
-            game_size_x,
-            game_size_y)
-
-        ctx.drawImage(flappy_image,
-            game_pos_x -180,
-            game_pos_y -290,
-            game_size_x,
-            game_size_y)
-
-        ctx.drawImage(sunny_logo_image,
-            game_pos_x + 300,
-            game_pos_y + 170,
-            700,
-            300)
-
-        ctx.drawImage(game_bird_image,
-            character_position_x,
-            character_position_y,
-            character_size_x,
-            character_size_y)
-
-        function gravity() {
-            if (character_position_y >= character_max_pos_y) {
-            }
-                
-            if (character_position_y < character_max_pos_y) {
-            character_position_y += game_speed
-            }
+    function gravity() {
+        if (character_position_y >= character_max_pos_y) {
         }
-        gravity()
+            
+        if (character_position_y < character_max_pos_y) {
+        character_position_y += game_speed
+        }
+    }
+    gravity()
+}
 
-/*     if (is_bird_menu_visible == !is_bird_menu_visible) {
-        main_menu_button.style.display = "none"
-    } */
+var hide_bird_menu_items = false
 
+var hide_bird_game_items = false
+
+function show_bird() {
+
+    if (bird_desktop_clicked) {
+        show_bird_menu()
+        show_bird_menu_items()
+        show_bird_window()
+
+        if (bird_play_clicked) {
+            hide_bird_menu()
+            hide_bird_menu_items = true
+
+            show_bird_window()
+            bird_game_items()
+        }
+    }
+    
+    else {    
+        hide_bird_menu()    
+        bird_play_clicked = false
+        bird_desktop_clicked = false
+        hide_bird_menu_items = false
     }
 }
 
 const fps_60 = 1000 / 60
 setInterval(update, fps_60)
 
-let mouse_x = 0
-let mouse_y = 0
+function screensaver_click() {
+    screenclick.addEventListener("click", () => {screensaver_active = !screensaver_active})
+}
+
+function screen_clicked() {
+    if (screensaver_active) {
+        wallpaper_counter = 0
+        screensaver_timer = 0
+        elapsed_ms = 0
+        screensaver_active = false
+    }
+}
 
 window.onmousemove = function(e) {
-    mouse_x = e.clientX;
-    mouse_y = e.clientY;
+    e.clientX
+    e.clientY
     wallpaper_counter = 0
-    screensaver_timer = + 1
+    screensaver_timer = 0
     elapsed_ms = 0
-    clicked_screensaver = false
+    screensaver_active = false
 }
 
 document.addEventListener('keydown', logKey);
-    function logKey(e) {
-        if (`${e.code}` === "KeyL") {
-            screensaver_timer = screensaver_set_init
-        }
+
+function logKey(e) {
+    if (`${e.code}` === "KeyL") {
+        screensaver_timer = screensaver_set_init
     }
+}
 
 let ui_visibility = document.getElementsByClassName('ui')[0]
 let screenclick_visibility = document.getElementsByClassName('screenclick')[0]
@@ -544,24 +571,25 @@ function update(){
     if (screensaver_timer > screensaver_set_init) {
         screensaver_loop()
         screen_clicked()
+
         ui_visibility.style.visibility = "hidden"
         screenclick_visibility.style.visibility = "visible"
         rotate_timer += fps_60
         wallpaper_counter++
     }
 
-    if (screensaver_timer < screensaver_set_init ) {
-        
-        ctx.resetTransform();
+    if (screensaver_timer < screensaver_set_init ) { 
+        ctx.resetTransform()
+
         ui_visibility.style.visibility = "visible"
         screenclick_visibility.style.visibility = "hidden"
+
         background()
         taskbar()
         clock()
         show_explorer()
         show_tom()
         show_tiktok()
-
         show_bird()
     }
 
@@ -571,6 +599,7 @@ tiktok_click()
 explorer_click()
 tom_click()
 screensaver_click()
+hide_bird_menu()
 })
 
 
