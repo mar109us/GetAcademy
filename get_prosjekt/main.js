@@ -391,8 +391,6 @@ function screensaver_loop() {
     cube_pos_y += cube_y_pos_speed
 }
 
-
-
 let game_speed = 5
 
 const game_pos_x = 800
@@ -592,19 +590,10 @@ function update(){
         show_tiktok()
         show_bird()
     }
-
 }
-
 tiktok_click()
 explorer_click()
 tom_click()
 screensaver_click()
 hide_bird_menu()
 })
-
-
-
-
-
-
-
