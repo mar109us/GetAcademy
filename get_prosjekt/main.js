@@ -391,20 +391,7 @@ function screensaver_loop() {
     cube_pos_y += cube_y_pos_speed
 }
 
-function screensaver_click() {
-    screenclick.addEventListener("click", () => {clicked_screensaver = !clicked_screensaver})
-}
 
-
-
-function screen_clicked() {
-    if (clicked_screensaver) {
-        wallpaper_counter = 0
-        screensaver_timer = + 1
-        elapsed_ms = 0
-        clicked_screensaver = false
-    }
-}
 
 let game_speed = 5
 
@@ -457,15 +444,15 @@ function hide_bird_menu() {
     main_menu_button.style.display = "none"
 }
 
-
-
 birdbutton.addEventListener("click", (e) => {is_bird_menu_visible = !is_bird_menu_visible;
     e.currentTarget.blur() })
 
-/* main_menu_button.addEventListener("click", (e) => {is_game_visible = !is_game_visible;
-    e.currentTarget.blur() }) */
+main_menu_button.addEventListener("click", (e) => {is_game_visible = !is_game_visible;
+    e.currentTarget.blur() })
 
 function show_bird() {
+
+
 
     if (is_bird_menu_visible) {
         
@@ -497,21 +484,25 @@ function show_bird() {
         700,
         300)
 
-        ctx.drawImage(game_bird_image,
-        character_position_x,
-        character_position_y,
-        character_size_x,
-        character_size_y)
+        if (is_game_visible) {
+            hide_bird_menu()
+            ctx.drawImage(game_bird_image,
+            character_position_x,
+            character_position_y,
+            character_size_x,
+            character_size_y)
 
-        function gravity() {
-            if (character_position_y >= character_max_pos_y) {
+            function gravity() {
+                if (character_position_y >= character_max_pos_y) {
+                }
+                    
+                if (character_position_y < character_max_pos_y) {
+                character_position_y += game_speed
+                }
             }
-                
-            if (character_position_y < character_max_pos_y) {
-            character_position_y += game_speed
-            }
-        }   
-        gravity()
+            gravity()
+        
+        }
     }
 
     else {
@@ -528,11 +519,24 @@ setInterval(update, fps_60)
 let mouse_x = 0
 let mouse_y = 0
 
+function screensaver_click() {
+    screenclick.addEventListener("click", () => {clicked_screensaver = !clicked_screensaver})
+}
+
+function screen_clicked() {
+    if (clicked_screensaver) {
+        wallpaper_counter = 0
+        screensaver_timer = 0
+        elapsed_ms = 0
+        clicked_screensaver = false
+    }
+}
+
 window.onmousemove = function(e) {
     mouse_x = e.clientX;
     mouse_y = e.clientY;
     wallpaper_counter = 0
-    screensaver_timer = + 1
+    screensaver_timer = 0
     elapsed_ms = 0
     clicked_screensaver = false
 }
@@ -551,7 +555,15 @@ function update(){
     elapsed_ms += fps_60
     screensaver_timer += fps_60
 
+    if (screensaver_timer > screensaver_set_init) {
+        screensaver_loop()
+        screen_clicked()
 
+        ui_visibility.style.visibility = "hidden"
+        screenclick_visibility.style.visibility = "visible"
+        rotate_timer += fps_60
+        wallpaper_counter++
+    }
 
     if (screensaver_timer < screensaver_set_init ) { 
         ctx.resetTransform()
@@ -568,17 +580,7 @@ function update(){
         show_bird()
     }
 
-    if (screensaver_timer > screensaver_set_init) {
-        screensaver_loop()
-        screen_clicked()
 
-        ui_visibility.style.visibility = "hidden"
-        screenclick_visibility.style.visibility = "visible"
-        rotate_timer += fps_60
-        wallpaper_counter++
-
-        hide_bird_menu()
-    }
 
 }
 
@@ -586,6 +588,7 @@ tiktok_click()
 explorer_click()
 tom_click()
 screensaver_click()
+hide_bird_menu()
 })
 
 
