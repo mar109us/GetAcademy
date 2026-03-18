@@ -247,8 +247,8 @@ function make_dark() {
 function screensaver_loop() {
 
     const wallpaper_init = 0
-    const wallpaper_duration = 600
-    const wallpaper_clear_duration = 100
+    const wallpaper_duration = 750
+    const wallpaper_clear_duration = 150
 
     const wallpaper_run = wallpaper_duration + wallpaper_clear_duration
 
@@ -272,14 +272,15 @@ function screensaver_loop() {
 
     //  wallpaper 1 blue
     if (wallpaper_counter > wallpaper1_start && wallpaper_counter < wallpaper1_start + wallpaper_duration) {
+        ctx.lineWidth = 0.4
         ctx.fillStyle = `rgba(0,0,0,1)`
         ctx.fillRect(0, 0, max_width, max_height)
         ctx.translate(5, -5)
         ctx.strokeStyle = `rgba(
-        ${5 + Math.floor(Math.random() * 10)},
-        ${10 + Math.floor(Math.random() * 10)},
-        ${30 + Math.floor(Math.random() * 3)},
-        ${Math.floor(Math.random() * 10) * 0.8})`   
+        ${25 + Math.floor(Math.random() * 25)},
+        ${10 + Math.floor(Math.random() * 90)},
+        ${125 + Math.floor(Math.random() * 5)},
+        ${Math.floor(Math.random() * 10) * 0.11})`   
     }
 
     //  make dark
@@ -289,14 +290,15 @@ function screensaver_loop() {
 
     //  wallpaper red
     if (wallpaper_counter > wallpaper2_start && wallpaper_counter < wallpaper2_start + wallpaper_duration) {
+        ctx.lineWidth = 0.4
         ctx.fillStyle = `rgba(0,0,0,0)`
         ctx.fillRect(0, 0, max_width, max_height)
         ctx.translate(5, -5)
         ctx.strokeStyle = `rgba(
-        ${30 + Math.floor(Math.random() * 3)},
+        ${100 + Math.floor(Math.random() * 155)},
+        ${50 + Math.floor(Math.random() * 40)},
         ${10 + Math.floor(Math.random() * 10)},
-        ${5 + Math.floor(Math.random() * 10)},
-        ${Math.floor(Math.random() * 10) * 0.8})`
+        ${Math.floor(Math.random() * 10) * 0.07})`
     } 
 
     if (wallpaper_counter > wallpaper2_start + wallpaper_duration && wallpaper_counter < wallpaper2_start + wallpaper_run) { 
@@ -305,14 +307,15 @@ function screensaver_loop() {
 
     //  wallpaper green
     if (wallpaper_counter > wallpaper3_start && wallpaper_counter < wallpaper3_start + wallpaper_duration) {
+        ctx.lineWidth = 0.4    
         ctx.fillStyle = `rgba(0,0,0,0)`
         ctx.fillRect(0, 0, max_width, max_height)
         ctx.translate(5, -5)
         ctx.strokeStyle = `rgba(
-        ${5 + Math.floor(Math.random() * 10)},
-        ${30 + Math.floor(Math.random() * 3)},
         ${10 + Math.floor(Math.random() * 10)},
-        ${Math.floor(Math.random() * 10) * 0.8})`
+        ${100 + Math.floor(Math.random() * 155)},
+        ${50 + Math.floor(Math.random() * 10)},
+        ${Math.floor(Math.random() * 10) * 0.03})`
     }
 
     if (wallpaper_counter > wallpaper3_start + wallpaper_duration && wallpaper_counter < wallpaper3_start + wallpaper_run) { 
