@@ -73,6 +73,7 @@ const birdbutton = document.getElementById("birdbutton")
 const bird_play_button = document.getElementById("main_menu_button")
 
 function background() {
+    ctx.filter = "brightness(90%)"
     ctx.drawImage(bg_image, pos_left, pos_top, max_width, max_height)
 }
 
@@ -621,7 +622,8 @@ function update(){
 tiktok_click()
 explorer_click()
 tom_click()
-
 screensaver_click()
+bird_desktop_button_click()
+bird_play_button_click()
 hide_bird_menu()
 })
