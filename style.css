@@ -11,7 +11,7 @@
 }
 
 #game_area {
-    background-color: #14140e;
+/*     background-color: #14140e; */
     display: none;
     position: sticky;
     top: 15%;
@@ -103,7 +103,7 @@ body {
 .main_menu_button {
 background-color: rgba(28, 45, 54, 0.25);
 font-family: "Arial Black", Gadget, sans-serif;
-text-shadow: 2px 2px #ffffff;
+/* text-shadow: 2px 2px #ffffff; */
 font-size: 20px;
 color: rgb(224, 183, 19); 
 border: 3px solid rgb(255, 0, 0); 
