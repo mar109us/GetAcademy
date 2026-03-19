@@ -511,7 +511,7 @@ function gravity() {
 }
 
 
-function show_bird_window() {
+function bird_menu_state() {
     game.drawImage(window1, game_pos_x, game_pos_y, game_size_x, game_size_y)
     text_style_3("Flappy Bird - It's Always Sunny in Philadelphia Version", game_pos_x + 10, game_pos_y - 10)
     game.drawImage(minimize_image, game_pos_x + 915, game_pos_y - 33, 25, 25)
@@ -528,8 +528,7 @@ function background_scroll(){
 }
 
 
-function bird_game_items() {
-    if (hide_bird_game_items) return 
+function bird_play_state() {
     
     background_scroll()
 
@@ -587,15 +586,15 @@ function bird_game_logic() {
     if (bird_desktop_clicked) {
         show_bird_menu()
         show_bird_menu_items()
-        show_bird_window()
+        bird_menu_state()
 
         if (bird_play_clicked) {
             gravity()
             hide_bird_menu()
             hide_bird_menu_items = true
 
-            show_bird_window()
-            bird_game_items()
+            bird_menu_state()
+            bird_play_state()
         }
     }
     
