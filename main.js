@@ -1,6 +1,9 @@
 const c = document.getElementById("draw_area")
 const ctx = c.getContext("2d")
 
+const g = document.getElementById("game_area")
+const game = g.getContext("2d")
+
 function text_style_1(text, x, y) {
     ctx.font = "40px Tahoma"
     ctx.strokeStyle = "black"
@@ -414,16 +417,23 @@ function show_bird_menu() {
     bird_play_button.style.display = "block"
 }  
 
+function show_game_area() {
+    document.getElementById("game_area").style.display = "block"
+}
+
+function hide_game_area() {
+    document.getElementById("game_area").style.display = "none"
+}
 
 let game_speed = 5
 
 const jump_physics = 5
 
-const game_pos_x = 800
-const game_pos_y = 300
+const game_pos_x = 0
+const game_pos_y = 0
 
-const game_size_x = 1000
-const game_size_y = 800
+const game_size_x = 500
+const game_size_y = 400
 
 const character_size_x = 150
 const character_size_y = 110
@@ -445,6 +455,8 @@ let hide_bird_game_items = false
 let bird_desktop_clicked = true ///////////////
 
 let bird_play_clicked = true /////////////////
+
+
 
 function show_bird() {
 
@@ -471,31 +483,33 @@ function show_bird() {
     function show_bird_menu_items() {
         if (hide_bird_menu_items) return
 
-        ctx.drawImage(game_main_menu_image,
+        show_game_area()
+
+        game.drawImage(game_main_menu_image,
         game_pos_x,
         game_pos_y,
         game_size_x,
         game_size_y)
 
-        ctx.drawImage(flappy_image,
-        game_pos_x -180,
-        game_pos_y -290,
-        game_size_x,
-        game_size_y)
+        game.drawImage(flappy_image,
+        game_pos_x - 60,
+        game_pos_y - 60,
+        400,
+        200)
 
-        ctx.drawImage(sunny_logo_image,
-        game_pos_x + 300,
-        game_pos_y + 170,
-        700,
-        300)
+        game.drawImage(sunny_logo_image,
+        game_pos_x + 200,
+        game_pos_y + 50,
+        300,
+        150)
     }
 
     function bird_game_items() {
         if (hide_bird_game_items) return
 
-        ctx.drawImage(bricks_image, game_pos_x, game_pos_y, game_size_x, game_size_y)
+        game.drawImage(bricks_image, game_pos_x, game_pos_y, game_size_x, game_size_y)
 
-        ctx.drawImage(game_bird_image,
+        game.drawImage(game_bird_image,
         character_position_x,
         character_position_y,
         character_size_x,
@@ -514,11 +528,11 @@ function show_bird() {
     }
 
     function show_bird_window() {
-    ctx.drawImage(window1, game_pos_x - 100, game_pos_y - 100, game_size_x + 200, game_size_y + 170)
+    game.drawImage(window1, game_pos_x, game_pos_y, game_size_x, game_size_y)
     text_style_3("Flappy Bird - It's Always Sunny in Philadelphia Version", game_pos_x + 10, game_pos_y - 10)
-    ctx.drawImage(minimize_image, game_pos_x + 915, game_pos_y - 33, 25, 25)
-    ctx.drawImage(maximize_image, game_pos_x + 945, game_pos_y - 33, 25, 25)
-    ctx.drawImage(close_image, game_pos_x + 975, game_pos_y - 33, 25, 25)
+    game.drawImage(minimize_image, game_pos_x + 915, game_pos_y - 33, 25, 25)
+    game.drawImage(maximize_image, game_pos_x + 945, game_pos_y - 33, 25, 25)
+    game.drawImage(close_image, game_pos_x + 975, game_pos_y - 33, 25, 25)
     }
 
     if (bird_desktop_clicked) {
@@ -535,7 +549,8 @@ function show_bird() {
         }
     }
     
-    else {    
+    else {
+        hide_game_area()
         hide_bird_menu()    
         bird_play_clicked = false
         bird_desktop_clicked = false
