@@ -60,6 +60,7 @@ const game_bird_image = document.getElementById("game_bird")
 const game_main_menu_image = document.getElementById("game_main_menu")
 const sunny_logo_image = document.getElementById("sunny_logo")
 const flappy_image = document.getElementById("flappy")
+const bricks_image = document.getElementById("bricks")
 
 //const  = document.getElementById("")
 
@@ -395,21 +396,10 @@ function screensaver_loop() {
     cube_pos_y += cube_y_pos_speed
 }
 
-
-
-
-
-
-
-
-
-
-
 function bird_desktop_button_click() {
 birdbutton.addEventListener("click", (e) => {bird_desktop_clicked = !bird_desktop_clicked;
     e.currentTarget.blur() })
 }
-
 
 function bird_play_button_click() {
 bird_play_button.addEventListener("click", (e) => {bird_play_clicked = !bird_play_clicked;
@@ -427,7 +417,7 @@ function show_bird_menu() {
 
 let game_speed = 5
 
-const jump_physics = 125
+const jump_physics = 5
 
 const game_pos_x = 800
 const game_pos_y = 300
@@ -452,11 +442,12 @@ let hide_bird_menu_items = false
 
 let hide_bird_game_items = false
 
-let bird_desktop_clicked = false
+let bird_desktop_clicked = false ///////////////
 
-let bird_play_clicked = false
+let bird_play_clicked = false /////////////////
 
 function show_bird() {
+
 
     function jump() {
         document.addEventListener('keydown', logKey)
@@ -502,8 +493,7 @@ function show_bird() {
     function bird_game_items() {
         if (hide_bird_game_items) return
 
-        ctx.fillStyle = `rgb(137, 186, 221)`
-        ctx.fillRect( game_pos_x, game_pos_y, game_size_x, game_size_y)
+        ctx.drawImage(bricks_image, game_pos_x, game_pos_y, game_size_x, game_size_y)
 
         ctx.drawImage(game_bird_image,
         character_position_x,
@@ -552,7 +542,6 @@ function show_bird() {
         hide_bird_menu_items = false
     }
 }
-
 
 const fps_60 = 1000 / 60
 setInterval(update, fps_60)
@@ -617,6 +606,7 @@ function update(){
         show_tom()
         show_tiktok()
         show_bird()
+        
     }
 }
 tiktok_click()
