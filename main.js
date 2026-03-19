@@ -442,9 +442,9 @@ let hide_bird_menu_items = false
 
 let hide_bird_game_items = false
 
-let bird_desktop_clicked = false ///////////////
+let bird_desktop_clicked = true ///////////////
 
-let bird_play_clicked = false /////////////////
+let bird_play_clicked = true /////////////////
 
 function show_bird() {
 
