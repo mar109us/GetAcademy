@@ -446,9 +446,9 @@ function hide_game_area() {
     document.getElementById("game_area").style.display = "none"
 }
 
-let game_speed = 4
+let game_speed = 1
 
-const jump_height = 80
+const jump_height = 20
 
 const game_pos_x = 4
 const game_pos_y = 32
@@ -471,18 +471,17 @@ function window_ui() {
 }
 
 
-const character_size_x = 75
-const character_size_y = 60
+const character_size_x = 65
+const character_size_y = 50
 
-let character_offset_x = 50
-let character_offset_y = 100
+let character_position_x = 50
+let character_position_y = 100
 
-let character_position_x = game_pos_x + character_offset_x
-let character_position_y = game_pos_y + character_offset_y
+let obstacle_height = 100
 
 let character_max_pos_y = game_pos_y + game_size_y - character_size_y
 
-let character_min_pos_y = game_pos_y + character_size_y
+let character_min_pos_y = game_pos_y + 15
 
 let hide_bird_menu_items = false
 
@@ -562,6 +561,16 @@ function background_scroll(){
     background2_x = background2_x - game_speed
 }
 
+/* let obstacle1_height = 50 + Math.floor(Math.random() * 50)
+let obstacle2_height = 50 + Math.floor(Math.random() * 50)
+let obstacle3_height = 50 + Math.floor(Math.random() * 50)
+let obstacle4_height = 50 + Math.floor(Math.random() * 50) */
+
+let obstacle1_height = 100
+let obstacle2_height = 100
+let obstacle3_height = 100
+let obstacle4_height = 100
+
 let obstacle1 = 250
 let obstacle2 = 386.5
 let obstacle3 = 523
@@ -610,17 +619,17 @@ function bird_play_state() {
         obstacle4 = game_size_x
     }    
 
-    game.fillRect(obstacle1, game_pos_y, 50, 100)
-    game.fillRect(obstacle1, game_pos_y + game_size_y -100, 50, 100)
+    game.fillRect(obstacle1, game_pos_y, 50, obstacle1_height)
+    game.fillRect(obstacle1, game_pos_y + game_size_y - obstacle1_height, 50, obstacle1_height)
 
-    game.fillRect(obstacle2, game_pos_y, 50, 100)
-    game.fillRect(obstacle2, game_pos_y + game_size_y -100, 50, 100)
+    game.fillRect(obstacle2, game_pos_y, 50, obstacle2_height)
+    game.fillRect(obstacle2, game_pos_y + game_size_y - obstacle2_height, 50, obstacle2_height)
 
-    game.fillRect(obstacle3, game_pos_y, 50, 100)
-    game.fillRect(obstacle3, game_pos_y + game_size_y -100, 50, 100)
+    game.fillRect(obstacle3, game_pos_y, 50, obstacle3_height)
+    game.fillRect(obstacle3, game_pos_y + game_size_y - obstacle3_height, 50, obstacle3_height)
 
-    game.fillRect(obstacle4, game_pos_y, 50, 100)
-    game.fillRect(obstacle4, game_pos_y + game_size_y -100, 50, 100)
+    game.fillRect(obstacle4, game_pos_y, 50, obstacle4_height)
+    game.fillRect(obstacle4, game_pos_y + game_size_y - obstacle4_height, 50, obstacle4_height)
 
     game.drawImage(game_bird_image,
     character_position_x,
@@ -630,14 +639,52 @@ function bird_play_state() {
 
     ///////////////     Collision
 
-/*     if (character_position_x == game_size_x + background_move - character_size_x) {
+
+
+    if (obstacle1 < character_position_x + character_size_x && character_position_y < game_pos_y + obstacle1_height) {
+        game_over()
+        console.log("obstacle1 top")
+    }
+    if (obstacle2 < character_position_x + character_size_x && character_position_y < game_pos_y + obstacle2_height) {
+        game_over()
+        console.log("obstacle2 top")
+    }
+    if (obstacle3 < character_position_x + character_size_x && character_position_y < game_pos_y + obstacle3_height) {
+        game_over()
+        console.log("obstacle3 top")
+    }
+    if (obstacle4 < character_position_x + character_size_x && character_position_y < game_pos_y + obstacle4_height) {
+        game_over()
+        console.log("obstacle4 top")
+    }
+
+    if (obstacle1 < character_position_x + character_size_x && character_position_y + character_size_y > game_pos_y + game_size_y - obstacle1_height) {
+        game_over()
+        console.log("obstacle1 bot")
+    }
+    if (obstacle2 < character_position_x + character_size_x && character_position_y + character_size_y > game_pos_y + game_size_y - obstacle2_height) {
+        game_over()
+        console.log("obstacle2 bot")
+    }
+    if (obstacle3 < character_position_x + character_size_x && character_position_y + character_size_y > game_pos_y + game_size_y - obstacle3_height) {
+        game_over()
+        console.log("obstacle3 bot")
+    }
+    if (obstacle4 < character_position_x + character_size_x && character_position_y + character_size_y > game_pos_y + game_size_y - obstacle4_height) {
+        game_over()
+        console.log("obstacle4 bot")
+    }
+
+
+
+}
+
+function game_over() {
     hide_game_area()
     hide_bird_menu()    
     bird_play_clicked = false
     bird_desktop_clicked = false
     hide_bird_menu_items = false
-    } */
-
 }
 
 function hide_bird_window() {
