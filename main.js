@@ -465,8 +465,6 @@ function window_ui() {
     game.drawImage(window_bottom_right_bar, window_size_x - 4, window_size_y - 4, 5, 5)
     game.drawImage(window_left_bar, -1, 16, 5, window_size_y - 19)
     game.drawImage(window_right_bar, window_size_x - 4, 16, 5, window_size_y - 19)
-
-
     game.drawImage(window_top_bar, 5, 0, window_size_x - 10, 16 * 2)
     game.drawImage(window_top_left_corner, 0, 0, 5, 16 * 2)
     game.drawImage(window_top_right_bar, window_size_x - 5, 0, 5, 16 * 2)
@@ -564,9 +562,22 @@ function background_scroll(){
     background2_x = background2_x - game_speed
 }
 
+let obstacle1 = 250
+let obstacle2 = 386.5
+let obstacle3 = 523
+let obstacle4 = 659.5
+
+function obstacle_scroll() {
+    obstacle1 = obstacle1 - game_speed
+    obstacle2 = obstacle2 - game_speed
+    obstacle3 = obstacle3 - game_speed
+    obstacle4 = obstacle4 - game_speed
+}
+
 function bird_play_state() {
     
     background_scroll()
+    obstacle_scroll()
 
     game.drawImage(bricks_image, background1_x, game_pos_y, game_size_x, game_size_y)
     game.drawImage(bricks_image, background2_x, game_pos_y, game_size_x, game_size_y)
@@ -583,8 +594,33 @@ function bird_play_state() {
         background2_x = game_size_x
     }
 
-    game.fillRect(game_size_x + background1_x, game_pos_y, 30,100)
-    game.fillRect(game_size_x + background1_x, game_pos_y + game_size_y -100, 30,100)
+    if (obstacle1 <= game_pos_x - 50) {
+        obstacle1 = game_size_x
+    }
+
+    if (obstacle2 <= game_pos_x - 50) {
+        obstacle2 = game_size_x
+    }
+
+    if (obstacle3 <= game_pos_x - 50) {
+        obstacle3 = game_size_x
+    }
+
+    if (obstacle4 <= game_pos_x - 50) {
+        obstacle4 = game_size_x
+    }    
+
+    game.fillRect(obstacle1, game_pos_y, 50, 100)
+    game.fillRect(obstacle1, game_pos_y + game_size_y -100, 50, 100)
+
+    game.fillRect(obstacle2, game_pos_y, 50, 100)
+    game.fillRect(obstacle2, game_pos_y + game_size_y -100, 50, 100)
+
+    game.fillRect(obstacle3, game_pos_y, 50, 100)
+    game.fillRect(obstacle3, game_pos_y + game_size_y -100, 50, 100)
+
+    game.fillRect(obstacle4, game_pos_y, 50, 100)
+    game.fillRect(obstacle4, game_pos_y + game_size_y -100, 50, 100)
 
     game.drawImage(game_bird_image,
     character_position_x,
