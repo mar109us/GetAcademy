@@ -446,9 +446,9 @@ function hide_game_area() {
     document.getElementById("game_area").style.display = "none"
 }
 
-let game_speed = 1
+let game_speed = 1.5
 
-const jump_height = 20
+const jump_height = 50
 
 const game_pos_x = 4
 const game_pos_y = 32
@@ -476,8 +476,6 @@ const character_size_y = 50
 
 let character_position_x = 50
 let character_position_y = 100
-
-let obstacle_height = 100
 
 let character_max_pos_y = game_pos_y + game_size_y - character_size_y
 
@@ -561,15 +559,25 @@ function background_scroll(){
     background2_x = background2_x - game_speed
 }
 
-/* let obstacle1_height = 50 + Math.floor(Math.random() * 50)
-let obstacle2_height = 50 + Math.floor(Math.random() * 50)
-let obstacle3_height = 50 + Math.floor(Math.random() * 50)
-let obstacle4_height = 50 + Math.floor(Math.random() * 50) */
 
-let obstacle1_height = 100
-let obstacle2_height = 100
-let obstacle3_height = 100
-let obstacle4_height = 100
+let top_obstacle1_height = Math.floor(Math.random() * 150)
+
+let top_obstacle2_height = Math.floor(Math.random() * 150)
+
+let top_obstacle3_height = Math.floor(Math.random() * 150)
+
+let top_obstacle4_height = Math.floor(Math.random() * 150)
+
+
+let bot_obstacle1_height = Math.floor(Math.random() * 150)
+
+let bot_obstacle2_height = Math.floor(Math.random() * 150)
+
+let bot_obstacle3_height = Math.floor(Math.random() * 150)
+
+let bot_obstacle4_height = Math.floor(Math.random() * 150)
+
+const obstacle_width = 50
 
 let obstacle1 = 250
 let obstacle2 = 386.5
@@ -605,78 +613,107 @@ function bird_play_state() {
 
     if (obstacle1 <= game_pos_x - 50) {
         obstacle1 = game_size_x
+        top_obstacle1_height = Math.floor(Math.random() * 150)
+        bot_obstacle1_height = Math.floor(Math.random() * 150)
     }
 
     if (obstacle2 <= game_pos_x - 50) {
         obstacle2 = game_size_x
+        top_obstacle2_height = Math.floor(Math.random() * 150)
+        bot_obstacle2_height = Math.floor(Math.random() * 150)
     }
 
     if (obstacle3 <= game_pos_x - 50) {
         obstacle3 = game_size_x
+        top_obstacle3_height = Math.floor(Math.random() * 150)
+        bot_obstacle3_height = Math.floor(Math.random() * 150)
     }
 
     if (obstacle4 <= game_pos_x - 50) {
         obstacle4 = game_size_x
+        top_obstacle4_height = Math.floor(Math.random() * 150)
+        bot_obstacle4_height = Math.floor(Math.random() * 150)
     }    
 
-    game.fillRect(obstacle1, game_pos_y, 50, obstacle1_height)
-    game.fillRect(obstacle1, game_pos_y + game_size_y - obstacle1_height, 50, obstacle1_height)
+    game.fillRect(obstacle1, game_pos_y, obstacle_width, top_obstacle1_height)
+    game.fillRect(obstacle1, game_pos_y + game_size_y - bot_obstacle1_height, obstacle_width, bot_obstacle1_height)
 
-    game.fillRect(obstacle2, game_pos_y, 50, obstacle2_height)
-    game.fillRect(obstacle2, game_pos_y + game_size_y - obstacle2_height, 50, obstacle2_height)
+    game.fillRect(obstacle2, game_pos_y, obstacle_width, top_obstacle2_height)
+    game.fillRect(obstacle2, game_pos_y + game_size_y - bot_obstacle2_height, obstacle_width, bot_obstacle2_height)
 
-    game.fillRect(obstacle3, game_pos_y, 50, obstacle3_height)
-    game.fillRect(obstacle3, game_pos_y + game_size_y - obstacle3_height, 50, obstacle3_height)
+    game.fillRect(obstacle3, game_pos_y, obstacle_width, top_obstacle3_height)
+    game.fillRect(obstacle3, game_pos_y + game_size_y - bot_obstacle3_height, obstacle_width, bot_obstacle3_height)
 
-    game.fillRect(obstacle4, game_pos_y, 50, obstacle4_height)
-    game.fillRect(obstacle4, game_pos_y + game_size_y - obstacle4_height, 50, obstacle4_height)
+    game.fillRect(obstacle4, game_pos_y, obstacle_width, top_obstacle4_height)
+    game.fillRect(obstacle4, game_pos_y + game_size_y - bot_obstacle4_height, obstacle_width, bot_obstacle4_height)
+
+    game.fillRect(
+        character_position_x,
+        character_position_y,
+        character_size_x,
+        character_size_y)
 
     game.drawImage(game_bird_image,
-    character_position_x,
-    character_position_y,
-    character_size_x,
-    character_size_y)
+        character_position_x,
+        character_position_y,
+        character_size_x,
+        character_size_y)
+
+
 
     ///////////////     Collision
 
 
 
-    if (obstacle1 < character_position_x + character_size_x && character_position_y < game_pos_y + obstacle1_height) {
+    if (obstacle1 + obstacle_width > character_position_x + character_size_x &&
+        obstacle1 < character_position_x + character_size_x &&
+        character_position_y < game_pos_y + top_obstacle1_height) {
         game_over()
         console.log("obstacle1 top")
     }
-    if (obstacle2 < character_position_x + character_size_x && character_position_y < game_pos_y + obstacle2_height) {
+    if (obstacle2 + obstacle_width > character_position_x + character_size_x &&
+        obstacle2 < character_position_x + character_size_x &&
+        character_position_y < game_pos_y + top_obstacle2_height) {
         game_over()
         console.log("obstacle2 top")
     }
-    if (obstacle3 < character_position_x + character_size_x && character_position_y < game_pos_y + obstacle3_height) {
+    if (obstacle3 + obstacle_width > character_position_x + character_size_x &&
+        obstacle3 < character_position_x + character_size_x &&
+        character_position_y < game_pos_y + top_obstacle3_height) {
         game_over()
         console.log("obstacle3 top")
     }
-    if (obstacle4 < character_position_x + character_size_x && character_position_y < game_pos_y + obstacle4_height) {
+    if (obstacle4 + obstacle_width > character_position_x + character_size_x &&
+        obstacle4 < character_position_x + character_size_x &&
+        character_position_y < game_pos_y + top_obstacle4_height) {
         game_over()
         console.log("obstacle4 top")
     }
 
-    if (obstacle1 < character_position_x + character_size_x && character_position_y + character_size_y > game_pos_y + game_size_y - obstacle1_height) {
+    if (obstacle1 + obstacle_width > character_position_x &&
+        obstacle1 < character_position_x + character_size_x &&
+        character_position_y + character_size_y > game_pos_y + game_size_y - bot_obstacle1_height) {
         game_over()
         console.log("obstacle1 bot")
     }
-    if (obstacle2 < character_position_x + character_size_x && character_position_y + character_size_y > game_pos_y + game_size_y - obstacle2_height) {
+    if (obstacle2 + obstacle_width > character_position_x + character_size_x &&
+        obstacle2 < character_position_x + character_size_x &&
+        character_position_y + character_size_y > game_pos_y + game_size_y - bot_obstacle2_height) {
         game_over()
         console.log("obstacle2 bot")
     }
-    if (obstacle3 < character_position_x + character_size_x && character_position_y + character_size_y > game_pos_y + game_size_y - obstacle3_height) {
+    if (obstacle3 + obstacle_width > character_position_x + character_size_x &&
+        obstacle3 < character_position_x + character_size_x &&
+        character_position_y + character_size_y > game_pos_y + game_size_y - bot_obstacle3_height) {
         game_over()
         console.log("obstacle3 bot")
     }
-    if (obstacle4 < character_position_x + character_size_x && character_position_y + character_size_y > game_pos_y + game_size_y - obstacle4_height) {
+    if (obstacle4 + obstacle_width > character_position_x + character_size_x &&
+        obstacle4 < character_position_x + character_size_x &&
+        character_position_y + character_size_y > game_pos_y + game_size_y - bot_obstacle4_height) {
         game_over()
         console.log("obstacle4 bot")
     }
-
-
-
 }
 
 function game_over() {
