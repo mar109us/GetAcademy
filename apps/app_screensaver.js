@@ -197,3 +197,16 @@ function screensaver_loop() {
     cube_pos_x += cube_x_pos_speed
     cube_pos_y += cube_y_pos_speed
 }
+
+function screensaver_click() {
+    screenclick.addEventListener("click", () => {global.screensaver_active = !global.screensaver_active})
+}
+
+function screen_clicked() {
+    if (global.screensaver_active) {
+        wallpaper_counter = 0
+        screensaver_timer = 0
+        elapsed_ms = 0
+        global.screensaver_active = false
+    }
+}

@@ -12,19 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
 const fps_60 = 1000 / 60
 setInterval(update, fps_60)
 
-function screensaver_click() {
-    screenclick.addEventListener("click", () => {screensaver_active = !screensaver_active})
-}
-
-function screen_clicked() {
-    if (global.screensaver_active) {
-        wallpaper_counter = 0
-        screensaver_timer = 0
-        elapsed_ms = 0
-        global.screensaver_active = false
-    }
-}
-
 onmousemove = function(e) {
     e.clientX
     e.clientY
