@@ -1,14 +1,16 @@
 # A web based imitation of Windows XP
 
 
-## Screensaver:
+## Screensaver
 
 **Time to active:** 5 min
+
 **Activate:** `L`
+
 **Wake to desktop:** Movement or mouse click
 
 
-## Clickable icons on desktop:
+## Clickable desktop icons
 
 Internet Explorer
 
