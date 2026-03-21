@@ -1,11 +1,11 @@
 function bird_desktop_button_click() {
-birdbutton.addEventListener("click", (e) => {bird_desktop_clicked = !bird_desktop_clicked;
-    e.currentTarget.blur() })
+    birdbutton.addEventListener("click", (e) => {bird_desktop_clicked = !bird_desktop_clicked;
+        e.currentTarget.blur() })
 }
 
 function bird_play_button_click() {
-bird_play_button.addEventListener("click", (e) => {bird_play_clicked = !bird_play_clicked;
-    e.currentTarget.blur() })
+    bird_play_button.addEventListener("click", (e) => {bird_play_clicked = !bird_play_clicked;
+        e.currentTarget.blur() })
 }
 
  function hide_bird_menu() {
@@ -64,7 +64,6 @@ let bird_desktop_clicked = false
 
 let bird_play_clicked = false
 
-
 function jump() {
     document.addEventListener('keydown', logKey)
 
@@ -79,8 +78,7 @@ function jump() {
                 character_position_y -= jump_height
             }
         }
-        }
-
+    }
 }
 jump()
 
@@ -187,25 +185,25 @@ function bird_play_state() {
         background2_x = game_size_x
     }
 
-    if (obstacle1_init_pos_x <= game_pos_x - 50) {
+    if (obstacle1_init_pos_x <= game_pos_x - obstacle_width) {
         obstacle1_init_pos_x = game_size_x
         top_obstacle1_height = Math.floor(Math.random() * 80)
         bot_obstacle1_height = Math.floor(Math.random() * 200)
     }
 
-    if (obstacle2_init_pos_x <= game_pos_x - 50) {
+    if (obstacle2_init_pos_x <= game_pos_x - obstacle_width) {
         obstacle2_init_pos_x = game_size_x
         top_obstacle2_height = Math.floor(Math.random() * 140)
         bot_obstacle2_height = Math.floor(Math.random() * 140)
     }
 
-    if (obstacle3_init_pos_x <= game_pos_x - 50) {
+    if (obstacle3_init_pos_x <= game_pos_x - obstacle_width) {
         obstacle3_init_pos_x = game_size_x
         top_obstacle3_height = Math.floor(Math.random() * 200)
         bot_obstacle3_height = Math.floor(Math.random() * 80)
     }
 
-    if (obstacle4_init_pos_x <= game_pos_x - 50) {
+    if (obstacle4_init_pos_x <= game_pos_x - obstacle_width) {
         obstacle4_init_pos_x = game_size_x
         top_obstacle4_height = Math.floor(Math.random() * 140)
         bot_obstacle4_height = Math.floor(Math.random() * 140)
