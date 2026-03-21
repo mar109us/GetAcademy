@@ -3,17 +3,17 @@
 
 ## Screensaver:
 
-** Time to active: ** 5 min
-** Activate: ** `L`
-** Wake to desktop: ** Movement or mouse click
+**Time to active:** 5 min
+**Activate:** `L`
+**Wake to desktop:** Movement or mouse click
 
 
 ## Clickable icons on desktop:
 
-** Internet Explorer **
+Internet Explorer
 
-** TikTok **
+TikTok
 
-** Tom.JPG **
+Tom.JPG
 
-** bird.EXE **
+bird.EXE
