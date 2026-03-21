@@ -64,23 +64,17 @@ let bird_desktop_clicked = false
 
 let bird_play_clicked = false
 
-function jump() {
-    document.addEventListener('keydown', logKey)
+function jump(e) {
 
-    function logKey(e) {
-        if (`${e.code}` === "Space") {
+    if (e.code === "Space") {
 
-            if (character_min_pos_y >= character_position_y) {
-                
-            }
-
-            else {
-                character_position_y -= jump_height
-            }
+        if (character_min_pos_y < character_position_y) {
+            character_position_y -= jump_height
         }
     }
 }
-jump()
+
+document.addEventListener('keydown', jump)
 
 const main_menu_size_x_offset = 4
 
