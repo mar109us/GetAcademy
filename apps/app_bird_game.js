@@ -108,7 +108,6 @@ function show_bird_menu_items() {
 }
 
 function gravity() {
-
     if (character_position_y >= character_max_pos_y) {
     }
         
@@ -119,12 +118,10 @@ function gravity() {
 
 
 function bird_menu_state() {
-
     text_style_window("Flappy Bird - It's Always Sunny in Philadelphia Version", 10, 23)
     game.drawImage(minimize_image, window_size_x - 84, 4, 25, 25)
     game.drawImage(maximize_image, window_size_x - 57, 4, 25, 25)
     game.drawImage(close_image, window_size_x - 30, 4, 25, 25)
-    
 }
 
 let background1_x = game_pos_x
@@ -211,17 +208,45 @@ function bird_play_state() {
         bot_obstacle4_height = Math.floor(Math.random() * 140)
     }    
 
-    game.fillRect(obstacle1, game_pos_y, obstacle_width, top_obstacle1_height)
-    game.fillRect(obstacle1, game_pos_y + game_size_y - bot_obstacle1_height, obstacle_width, bot_obstacle1_height)
+    game.fillRect(obstacle1, 
+        game_pos_y,
+        obstacle_width,
+        top_obstacle1_height)
 
-    game.fillRect(obstacle2, game_pos_y, obstacle_width, top_obstacle2_height)
-    game.fillRect(obstacle2, game_pos_y + game_size_y - bot_obstacle2_height, obstacle_width, bot_obstacle2_height)
+    game.fillRect(obstacle1,
+        game_pos_y + game_size_y - bot_obstacle1_height,
+        obstacle_width,
+        bot_obstacle1_height)
 
-    game.fillRect(obstacle3, game_pos_y, obstacle_width, top_obstacle3_height)
-    game.fillRect(obstacle3, game_pos_y + game_size_y - bot_obstacle3_height, obstacle_width, bot_obstacle3_height)
+    game.fillRect(obstacle2,
+        game_pos_y,
+        obstacle_width,
+        top_obstacle2_height)
 
-    game.fillRect(obstacle4, game_pos_y, obstacle_width, top_obstacle4_height)
-    game.fillRect(obstacle4, game_pos_y + game_size_y - bot_obstacle4_height, obstacle_width, bot_obstacle4_height)
+    game.fillRect(obstacle2,
+        game_pos_y + game_size_y - bot_obstacle2_height,
+        obstacle_width,
+        bot_obstacle2_height)
+
+    game.fillRect(obstacle3,
+        game_pos_y,
+        obstacle_width,
+        top_obstacle3_height)
+
+    game.fillRect(obstacle3,
+        game_pos_y + game_size_y - bot_obstacle3_height,
+        obstacle_width,
+        bot_obstacle3_height)
+
+    game.fillRect(obstacle4,
+        game_pos_y,
+        obstacle_width,
+        top_obstacle4_height)
+
+    game.fillRect(obstacle4,
+        game_pos_y + game_size_y - bot_obstacle4_height,
+        obstacle_width,
+        bot_obstacle4_height)
 
     game.drawImage(game_bird_image,
         character_position_x,
@@ -229,51 +254,69 @@ function bird_play_state() {
         character_size_x,
         character_size_y)
 
-    if (obstacle1 + obstacle_width > character_position_x + character_size_x &&
-        obstacle1 < character_position_x + character_size_x &&
-        character_position_y < game_pos_y + top_obstacle1_height) {
+    let obstacle1_right_edge = obstacle1 + obstacle_width
+    let obstacle2_right_edge = obstacle2 + obstacle_width
+    let obstacle3_right_edge = obstacle3 + obstacle_width
+    let obstacle4_right_edge = obstacle4 + obstacle_width
+
+    let top_obstacle1_bottom_edge = game_pos_y + top_obstacle1_height
+    let top_obstacle2_bottom_edge = game_pos_y + top_obstacle2_height
+    let top_obstacle3_bottom_edge = game_pos_y + top_obstacle3_height
+    let top_obstacle4_bottom_edge = game_pos_y + top_obstacle4_height
+
+    let character_right_edge = character_position_x + character_size_x
+    let character_bottom_edge = character_position_y + character_size_y
+
+    let bottom_obstacle1_top_edge = game_pos_y + game_size_y - bot_obstacle1_height
+    let bottom_obstacle2_top_edge = game_pos_y + game_size_y - bot_obstacle2_height
+    let bottom_obstacle3_top_edge = game_pos_y + game_size_y - bot_obstacle3_height
+    let bottom_obstacle4_top_edge = game_pos_y + game_size_y - bot_obstacle4_height
+
+    if (obstacle1_right_edge > character_right_edge &&
+        obstacle1 < character_right_edge &&
+        character_position_y < top_obstacle1_bottom_edge) {
         game_over()
     }
 
-    if (obstacle2 + obstacle_width > character_position_x + character_size_x &&
-        obstacle2 < character_position_x + character_size_x &&
-        character_position_y < game_pos_y + top_obstacle2_height) {
+    if (obstacle2_right_edge > character_right_edge &&
+        obstacle2 < character_right_edge &&
+        character_position_y < top_obstacle2_bottom_edge) {
         game_over()
     }
 
-    if (obstacle3 + obstacle_width > character_position_x + character_size_x &&
-        obstacle3 < character_position_x + character_size_x &&
-        character_position_y < game_pos_y + top_obstacle3_height) {
+    if (obstacle3_right_edge > character_right_edge &&
+        obstacle3 < character_right_edge &&
+        character_position_y < top_obstacle3_bottom_edge) {
         game_over()
     }
 
-    if (obstacle4 + obstacle_width > character_position_x + character_size_x &&
-        obstacle4 < character_position_x + character_size_x &&
-        character_position_y < game_pos_y + top_obstacle4_height) {
+    if (obstacle4_right_edge > character_right_edge &&
+        obstacle4 < character_right_edge &&
+        character_position_y < top_obstacle4_bottom_edge) {
         game_over()
     }
 
-    if (obstacle1 + obstacle_width > character_position_x &&
-        obstacle1 < character_position_x + character_size_x &&
-        character_position_y + character_size_y > game_pos_y + game_size_y - bot_obstacle1_height) {
+    if (obstacle1_right_edge > character_position_x &&
+        obstacle1 < character_right_edge &&
+        character_bottom_edge > bottom_obstacle1_top_edge) {
         game_over()
     }
 
-    if (obstacle2 + obstacle_width > character_position_x + character_size_x &&
-        obstacle2 < character_position_x + character_size_x &&
-        character_position_y + character_size_y > game_pos_y + game_size_y - bot_obstacle2_height) {
+    if (obstacle2_right_edge > character_right_edge &&
+        obstacle2 < character_right_edge &&
+        character_bottom_edge > bottom_obstacle2_top_edge) {
         game_over()
     }
 
-    if (obstacle3 + obstacle_width > character_position_x + character_size_x &&
-        obstacle3 < character_position_x + character_size_x &&
-        character_position_y + character_size_y > game_pos_y + game_size_y - bot_obstacle3_height) {
+    if (obstacle3_right_edge > character_right_edge &&
+        obstacle3 < character_right_edge &&
+        character_bottom_edge > bottom_obstacle3_top_edge) {
         game_over()
     }
 
-    if (obstacle4 + obstacle_width > character_position_x + character_size_x &&
-        obstacle4 < character_position_x + character_size_x &&
-        character_position_y + character_size_y > game_pos_y + game_size_y - bot_obstacle4_height) {
+    if (obstacle4_right_edge > character_right_edge &&
+        obstacle4 < character_right_edge &&
+        character_bottom_edge > bottom_obstacle4_top_edge) {
         game_over()
     }
 }
