@@ -49,32 +49,67 @@ function text_style_game(text, x, y) {
     game.fillText(text, x, y)
 }
 
-const max_width = 2560
-const max_height = 1440
-
-const pos_top = 0
-const pos_left = 0
-const pos_bot = 1440
-const pos_right = 2560
-
 // display page after content is loaded
 document.addEventListener("DOMContentLoaded", () => {
 
 function background() {
     os.filter = "brightness(90%)"
-    os.drawImage(bg_image, pos_left, pos_top, max_width, max_height)
+    os.drawImage(bg_image, global.pos_left, global.pos_top, global.max_width, global.max_height)
 }
 
-function taskbar() {
-    const set_height = 60
-    const icon_size = 60
-    const pos_vertical = pos_bot - set_height
+const taskbar_height = 60
 
-    os.drawImage(bar_image, pos_left, pos_vertical, max_width, set_height)
-    os.drawImage(lightbar_image, pos_left + 1900, pos_vertical, 700, set_height)
-    os.drawImage(startbar_image, pos_left, pos_vertical, 170, set_height)
-    os.drawImage(wicon_image, pos_left, pos_vertical, icon_size, icon_size)
-    text_style_1("start", pos_left + 60, pos_vertical + 45)
+const bar_pos = global.pos_bot - taskbar_height
+
+const lightbar_offset_x = 1900
+const lightbar_x = global.pos_left + lightbar_offset_x
+const lightbar_size_x = 700
+
+const startbar_size_x = 190
+
+const start_text_offset_x = 75
+const start_text_pos_x = global.pos_left + start_text_offset_x
+
+const start_text_offset_y = 45
+const start_text_pos_y = bar_pos + start_text_offset_y
+
+const icon_size_x = 60
+const icon_size_y = 50
+
+const icon_offset_x = 5
+const icon_pos_x = global.pos_left + icon_offset_x
+
+const icon_offset_y = 3
+const icon_pos_y = bar_pos + icon_offset_y
+
+function taskbar() {
+    os.drawImage(bar_image, 
+        global.pos_left,
+        bar_pos,
+        global.max_width,
+        taskbar_height)
+
+    os.drawImage(lightbar_image,
+        lightbar_x,
+        bar_pos,
+        lightbar_size_x,
+        taskbar_height)
+
+    os.drawImage(startbar_image,
+        global.pos_left,
+        bar_pos,
+        startbar_size_x,
+        taskbar_height)
+
+    os.drawImage(wicon_image,
+        icon_pos_x,
+        icon_pos_y,
+        icon_size_x,
+        icon_size_y)
+
+    text_style_1("start",
+        start_text_pos_x,
+        start_text_pos_y)
     //ctx.drawImage(virus_image, 100, 100, 100, 100)
 }   
 
@@ -139,8 +174,8 @@ function show_explorer(){
     }
 }
 
-const set_height = 60
-const pos_vertical = pos_bot - set_height
+const select_clock_height = 60
+const clock_position = global.pos_bot - select_clock_height
 
 let current_time 
 current_time = new Date().getTime()
@@ -148,7 +183,7 @@ const clock_interval = 200  // clock refresh rate in ms
 
 // since 60fps is visually too high for clock update, stagger data input
 function clock(){
-    text_style_2(`${current_time}ms since 01-01-1970`, pos_left + 2050, pos_vertical + 43)
+    text_style_2(`${current_time}ms since 01-01-1970`, global.pos_left + 2050, clock_position + 43)
 
     function update_time(){
         current_time = new Date().getTime()
@@ -159,6 +194,7 @@ function clock(){
         elapsed_ms = 0
     }
 }
+
 
 let is_tom_visible = false
 const tompos_x = 250
@@ -193,21 +229,21 @@ function screensaver_click() {
 }
 
 function screen_clicked() {
-    if (screensaver_active) {
+    if (global.screensaver_active) {
         wallpaper_counter = 0
         screensaver_timer = 0
         elapsed_ms = 0
-        screensaver_active = false
+        global.screensaver_active = false
     }
 }
 
-window.onmousemove = function(e) {
+onmousemove = function(e) {
     e.clientX
     e.clientY
     wallpaper_counter = 0
     screensaver_timer = 0
     elapsed_ms = 0
-    screensaver_active = false
+    global.screensaver_active = false
 }
 
 document.addEventListener('keydown', logKey);

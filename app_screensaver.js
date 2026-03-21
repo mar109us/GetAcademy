@@ -6,7 +6,7 @@ const screensaver_set_minutes = 5
 let screensaver_start_calc = screensaver_set_minutes * 60 * 1000
 let screensaver_set_init = screensaver_start_calc
 
-let screensaver_active = false
+global.screensaver_active = false
 
 //  size speed
 const set_cube_x_size_speed = 1000
@@ -60,8 +60,8 @@ function screensaver_loop() {
     const wallpaper2_start = wallpaper_run
     const wallpaper3_start = wallpaper_run * 2
 
-    let cube_pos_x_max = max_width - cube_size_x
-    let cube_pos_y_max = max_height - cube_size_y
+    let cube_pos_x_max = global.max_width - cube_size_x
+    let cube_pos_y_max = global.max_height - cube_size_y
 
     os.lineWidth = 0.4
 
@@ -78,7 +78,7 @@ function screensaver_loop() {
     if (wallpaper_counter > wallpaper1_start && wallpaper_counter < wallpaper1_start + wallpaper_duration) {
         os.lineWidth = 0.4
         os.fillStyle = `rgba(0,0,0,1)`
-        os.fillRect(0, 0, max_width, max_height)
+        os.fillRect(0, 0, global.max_width, global.max_height)
         os.translate(5, -5)
         os.strokeStyle = `rgba(
         ${25 + Math.floor(Math.random() * 25)},
@@ -96,7 +96,7 @@ function screensaver_loop() {
     if (wallpaper_counter > wallpaper2_start && wallpaper_counter < wallpaper2_start + wallpaper_duration) {
         os.lineWidth = 0.4
         os.fillStyle = `rgba(0,0,0,0)`
-        os.fillRect(0, 0, max_width, max_height)
+        os.fillRect(0, 0, global.max_width, global.max_height)
         os.translate(5, -5)
         os.strokeStyle = `rgba(
         ${100 + Math.floor(Math.random() * 155)},
@@ -113,7 +113,7 @@ function screensaver_loop() {
     if (wallpaper_counter > wallpaper3_start && wallpaper_counter < wallpaper3_start + wallpaper_duration) {
         os.lineWidth = 0.4    
         os.fillStyle = `rgba(0,0,0,0)`
-        os.fillRect(0, 0, max_width, max_height)
+        os.fillRect(0, 0, global.max_width, global.max_height)
         os.translate(5, -5)
         os.strokeStyle = `rgba(
         ${10 + Math.floor(Math.random() * 10)},

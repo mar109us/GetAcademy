@@ -48,7 +48,6 @@ function window_ui() {
     game.drawImage(window_top_right_bar, window_size_x - 5, 0, 5, 16 * 2)
 }
 
-
 const character_size_x = 65
 const character_size_y = 50
 
