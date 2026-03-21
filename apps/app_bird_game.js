@@ -40,19 +40,19 @@ const window_size_x = 500
 const window_size_y = 400
 
 function window_ui() {
-    game.drawImage(window_bottom_bar, 4, window_size_y - 4, window_size_x - 8, 5)
-    game.drawImage(window_bottom_left_bar, -1, window_size_y - 4, 5, 5)
-    game.drawImage(window_bottom_right_bar, window_size_x - 4, window_size_y - 4, 5, 5)
-    game.drawImage(window_left_bar, -1, 16, 5, window_size_y - 19)
-    game.drawImage(window_right_bar, window_size_x - 4, 16, 5, window_size_y - 19)
-    game.drawImage(window_top_bar, 5, 0, window_size_x - 10, 16 * 2)
-    game.drawImage(window_top_left_corner, 0, 0, 5, 16 * 2)
-    game.drawImage(window_top_right_bar, window_size_x - 5, 0, 5, 16 * 2)
+    canvas_name.drawImage(window_bottom_bar, 4, window_size_y - 4, window_size_x - 8, 5)
+    canvas_name.drawImage(window_bottom_left_bar, -1, window_size_y - 4, 5, 5)
+    canvas_name.drawImage(window_bottom_right_bar, window_size_x - 4, window_size_y - 4, 5, 5)
+    canvas_name.drawImage(window_left_bar, -1, 16, 5, window_size_y - 19)
+    canvas_name.drawImage(window_right_bar, window_size_x - 4, 16, 5, window_size_y - 19)
+    canvas_name.drawImage(window_top_bar, 5, 0, window_size_x - 10, 16 * 2)
+    canvas_name.drawImage(window_top_left_corner, 0, 0, 5, 16 * 2)
+    canvas_name.drawImage(window_top_right_bar, window_size_x - 5, 0, 5, 16 * 2)
 
     text_style_window("Flappy Bird - It's Always Sunny in Philadelphia Version", 10, 23)
-    game.drawImage(minimize_image, window_size_x - 84, 4, 25, 25)
-    game.drawImage(maximize_image, window_size_x - 57, 4, 25, 25)
-    game.drawImage(close_image, window_size_x - 30, 4, 25, 25)
+    canvas_name.drawImage(minimize_image, window_size_x - 84, 4, 25, 25)
+    canvas_name.drawImage(maximize_image, window_size_x - 57, 4, 25, 25)
+    canvas_name.drawImage(close_image, window_size_x - 30, 4, 25, 25)
 }
 
 
@@ -100,19 +100,19 @@ function show_bird_menu_items() {
     if (hide_bird_menu_items) return
     show_game_area()
 
-    game.drawImage(game_main_menu_image,
+    canvas_name.drawImage(game_main_menu_image,
     game_pos_x,
     game_pos_y,
     game_size_x - main_menu_size_x_offset,
     game_size_y)
 
-    game.drawImage(flappy_image,
+    canvas_name.drawImage(flappy_image,
     game_pos_x - flappy_image_pos_x_offset,
     game_pos_y - flappy_image_pos_y_offset,
     flappy_image_size_x,
     flappy_image_size_y)
 
-    game.drawImage(sunny_logo_image,
+    canvas_name.drawImage(sunny_logo_image,
     game_pos_x + sunny_logo_pos_x_offset,
     game_pos_y + sunny_logo_pos_y_offset,
     sunny_logo_size_x,
@@ -167,8 +167,8 @@ function bird_play_state() {
     background_scroll()
     obstacle_scroll()
 
-    game.drawImage(bricks_image, background1_x, game_pos_y, game_size_x, game_size_y)
-    game.drawImage(bricks_image, background2_x, game_pos_y, game_size_x, game_size_y)
+    canvas_name.drawImage(bricks_image, background1_x, game_pos_y, game_size_x, game_size_y)
+    canvas_name.drawImage(bricks_image, background2_x, game_pos_y, game_size_x, game_size_y)
 
     if (background1_x <= game_pos_x - game_size_x) {
         background1_x = game_size_x
@@ -206,47 +206,47 @@ function bird_play_state() {
         bot_obstacle4_height = Math.floor(Math.random() * 140)
     }    
 
-    game.fillRect(obstacle1_init_pos_x, 
+    canvas_name.fillRect(obstacle1_init_pos_x, 
         game_pos_y,
         obstacle_width,
         top_obstacle1_height)
 
-    game.fillRect(obstacle1_init_pos_x,
+    canvas_name.fillRect(obstacle1_init_pos_x,
         game_pos_y + game_size_y - bot_obstacle1_height,
         obstacle_width,
         bot_obstacle1_height)
 
-    game.fillRect(obstacle2_init_pos_x,
+    canvas_name.fillRect(obstacle2_init_pos_x,
         game_pos_y,
         obstacle_width,
         top_obstacle2_height)
 
-    game.fillRect(obstacle2_init_pos_x,
+    canvas_name.fillRect(obstacle2_init_pos_x,
         game_pos_y + game_size_y - bot_obstacle2_height,
         obstacle_width,
         bot_obstacle2_height)
 
-    game.fillRect(obstacle3_init_pos_x,
+    canvas_name.fillRect(obstacle3_init_pos_x,
         game_pos_y,
         obstacle_width,
         top_obstacle3_height)
 
-    game.fillRect(obstacle3_init_pos_x,
+    canvas_name.fillRect(obstacle3_init_pos_x,
         game_pos_y + game_size_y - bot_obstacle3_height,
         obstacle_width,
         bot_obstacle3_height)
 
-    game.fillRect(obstacle4_init_pos_x,
+    canvas_name.fillRect(obstacle4_init_pos_x,
         game_pos_y,
         obstacle_width,
         top_obstacle4_height)
 
-    game.fillRect(obstacle4_init_pos_x,
+    canvas_name.fillRect(obstacle4_init_pos_x,
         game_pos_y + game_size_y - bot_obstacle4_height,
         obstacle_width,
         bot_obstacle4_height)
 
-    game.drawImage(game_bird_image,
+    canvas_name.drawImage(game_bird_image,
         character_position_x,
         character_position_y,
         character_size_x,
@@ -345,7 +345,7 @@ function bird_score() {
 
 function game_over() {
     is_playing = false
-    game.drawImage(game_main_menu_image,
+    canvas_name.drawImage(game_main_menu_image,
     game_pos_x,
     game_pos_y,
     game_size_x - 4,
