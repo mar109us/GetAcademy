@@ -1,19 +1,19 @@
 # A web based imitation of Windows XP
 
 
-## Screensaver:
+### Screensaver:
 
-### Time to active: 5 min
-### Button to activate: L
-### Wake to desktop: Mouse move or mouse click
+#### **Time to active:** 5 min
+#### **Activate:** `L`
+#### **Wake to desktop:** Movement or mouse click
 
 
-## Clickable icons on desktop:
+### Clickable icons on desktop:
 
-## Internet Explorer
+#### **Internet Explorer**
 
-## TikTok
+#### **TikTok**
 
-## Tom.JPG
+#### **Tom.JPG**
 
-## bird.EXE
+#### **bird.EXE**
