@@ -13,16 +13,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const alertWindow = new DesktopWindow("Error!", 200, 200, 400, 300);
 
+
+
 const fps_60 = 1000 / 60
 setInterval(update, fps_60)
 
+
 onmousemove = function(e) {
-    e.clientX
-    e.clientY
+    global.mouse_x = e.clientX
+    global.mouse_y = e.clientY
     wallpaper_counter = 0
     screensaver_timer = 0
     elapsed_ms = 0
     global.screensaver_active = false
+
+
 }
 
 document.addEventListener('keydown', logKey);

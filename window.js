@@ -36,6 +36,9 @@ class DesktopWindow {
     ctx.drawImage(window_right_bar, w - 4, 16, 5, h - 19);
 
     ctx.drawImage(window_top_bar, 5, 0, w - 10, 32);
+
+    console.log(global.mouse_x)
+
     ctx.drawImage(window_top_left_corner, 0, 0, 5, 32);
     ctx.drawImage(window_top_right_bar, w - 5, 0, 5, 32);
 
@@ -51,3 +54,6 @@ class DesktopWindow {
     this.ctx.fillText(text, x, y);
   }
 }
+
+
+
