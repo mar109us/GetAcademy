@@ -1,4 +1,4 @@
-#draw_area {
+#os_canvas {
     background-color: #14140e;
     display: block;
     position: absolute;
@@ -17,7 +17,7 @@ position: absolute;
 
 }
 
-#game_area {
+#game_canvas {
     display: block;
     position: absolute;
     top: 0px;
