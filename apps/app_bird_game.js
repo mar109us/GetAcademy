@@ -31,11 +31,13 @@ const jump_height = 40
 const game_pos_x = 4
 const game_pos_y = 32
 
-const window_size_x = 500
-const window_size_y = 400
+
 
 const game_size_x = 500 - 4
 const game_size_y = 400 - 36
+
+const window_size_x = 500
+const window_size_y = 400
 
 function window_ui() {
     game.drawImage(window_bottom_bar, 4, window_size_y - 4, window_size_x - 8, 5)
@@ -46,7 +48,13 @@ function window_ui() {
     game.drawImage(window_top_bar, 5, 0, window_size_x - 10, 16 * 2)
     game.drawImage(window_top_left_corner, 0, 0, 5, 16 * 2)
     game.drawImage(window_top_right_bar, window_size_x - 5, 0, 5, 16 * 2)
+
+    text_style_window("Flappy Bird - It's Always Sunny in Philadelphia Version", 10, 23)
+    game.drawImage(minimize_image, window_size_x - 84, 4, 25, 25)
+    game.drawImage(maximize_image, window_size_x - 57, 4, 25, 25)
+    game.drawImage(close_image, window_size_x - 30, 4, 25, 25)
 }
+
 
 const character_size_x = 65
 const character_size_y = 50
@@ -120,12 +128,7 @@ function gravity() {
     }
 }
 
-function bird_menu_state() {
-    text_style_window("Flappy Bird - It's Always Sunny in Philadelphia Version", 10, 23)
-    game.drawImage(minimize_image, window_size_x - 84, 4, 25, 25)
-    game.drawImage(maximize_image, window_size_x - 57, 4, 25, 25)
-    game.drawImage(close_image, window_size_x - 30, 4, 25, 25)
-}
+
 
 let background1_x = game_pos_x
 let background2_x = game_size_x
@@ -369,7 +372,6 @@ function bird_game_logic() {
         window_ui()
         show_bird_menu()
         show_bird_menu_items()
-        bird_menu_state()
 
         if (bird_play_clicked) {
             is_playing = true
@@ -381,7 +383,6 @@ function bird_game_logic() {
             bird_play_state()
             window_ui()
             bird_score()
-            bird_menu_state()
         }
     }
     
