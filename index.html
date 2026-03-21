@@ -2,24 +2,29 @@
 <html>
     <head>
         <link rel="stylesheet" href="style.css">
+        <script src="globals.js"></script>
+        <script src="resources.js" defer></script>
         <script src="main.js" defer></script>
+        <script src="os_ui.js" defer></script>
+        <script src="fonts.js" defer></script>
+        <script src="apps/app_screensaver.js" defer></script>
+        <script src="apps/app_bird_game.js" defer></script>
+        <script src="apps/app_clock.js" defer></script>
+        <script src="apps/app_tiktok.js" defer></script>
+        <script src="apps/app_explorer.js" defer></script>
+        <script src="apps/app_tom.js" defer></script>
     </head>
 
     <body>
-        <canvas id="draw_area" width="2560" height="1440"></canvas>
-
-       
-
+        <canvas id="os_canvas" width="2560" height="1440"></canvas>
 
         <button id="screenclick" class="screenclick"></button>
-
-
-
 
     <div class="ui">
 
         <div id="gamediv">
-            <canvas id="game_area" width="500" height="400"></canvas>
+
+            <canvas id="game_canvas" width="500" height="400"></canvas>
 
             <button id="main_menu_button" class="main_menu_button">
                 <p>
@@ -33,41 +38,40 @@
             </button>
         </div>
 
-        <img id="bg" class="filter" src="assets/xp-bg.jpg">
-        <img id="bar" src="assets/bar.jpg">
-        <img id="wicon" src="assets/wicon.png">
-        <img id="startbar" src="assets/start-bar.jpg">
-        <img id="window1" src="assets/window1.png">
-        <img id="minimize" src="assets/minimize.png">
-        <img id="maximize" src="assets/maximize.png">
-        <img id="close" src="assets/exit.png">
-        <img id="profile" src="assets/profile.png">
-        <img id="heart" src="assets/heart.png">
-        <img id="comment" src="assets/comment.png">
-        <img id="share" src="assets/share.png">
-        <img id="tom" src="assets/tom.png">
-        <img id="ad" src="assets/ad.png">
-        <img id="youtube" src="assets/youtube.jpg">
-        <img id="lightbar" src="assets/lightbar.jpg">
-        <img id="virus" src="assets/virus.png">
-        <img id="bricks" src="assets/bricks.jpg">
+        <img id="bg" class="filter" src="assets/xp-bg.jpg" hidden>
+        <img id="bar" src="assets/bar.jpg" hidden>
+        <img id="wicon" src="assets/wicon.png" hidden>
+        <img id="startbar" src="assets/start-bar.jpg" hidden>
+        <img id="window1" src="assets/window1.png" hidden>
+        <img id="minimize" src="assets/minimize.png" hidden>
+        <img id="maximize" src="assets/maximize.png" hidden>
+        <img id="close" src="assets/exit.png" hidden>
+        <img id="profile" src="assets/profile.png" hidden>
+        <img id="heart" src="assets/heart.png" hidden>
+        <img id="comment" src="assets/comment.png" hidden>
+        <img id="share" src="assets/share.png" hidden>
+        <img id="tom" src="assets/tom.png" hidden>
+        <img id="ad" src="assets/ad.png" hidden>
+        <img id="youtube" src="assets/youtube.jpg" hidden>
+        <img id="lightbar" src="assets/lightbar.jpg" hidden>
+        <img id="virus" src="assets/virus.png" hidden>
+        <img id="bricks" src="assets/bricks.jpg" hidden>
 
-        <img id="game_bird" src="assets/bird.png">
-        <img id="game_main_menu" src="assets/game_main_menu_background.png">
-        <img id="sunny_logo" src="assets/sunny_logo.png">
-        <img id="flappy" src="assets/flappy.png">
+        <img id="game_bird" src="assets/bird.png" hidden>
+        <img id="game_main_menu" src="assets/game_main_menu_background.png" hidden>
+        <img id="sunny_logo" src="assets/sunny_logo.png" hidden>
+        <img id="flappy" src="assets/flappy.png" hidden>
 
-        <img id="window_bottom_bar" src="assets/window_bottom_bar.png">
-        <img id="window_bottom_left_bar" src="assets/window_bottom_left_bar.png">
-        <img id="window_bottom_right_bar" src="assets/window_bottom_right_bar.png">
-        <img id="window_left_bar" src="assets/window_left_bar.png">
-        <img id="window_right_bar" src="assets/window_right_bar.png">
-        <img id="window_top_bar" src="assets/window_top_bar.png">
-        <img id="window_top_left_corner" src="assets/window_top_left_corner.png">
-        <img id="window_top_right_bar" src="assets/window_top_right_bar.png">
+        <img id="window_bottom_bar" src="assets/window_bottom_bar.png" hidden>
+        <img id="window_bottom_left_bar" src="assets/window_bottom_left_bar.png" hidden>
+        <img id="window_bottom_right_bar" src="assets/window_bottom_right_bar.png" hidden>
+        <img id="window_left_bar" src="assets/window_left_bar.png" hidden>
+        <img id="window_right_bar" src="assets/window_right_bar.png" hidden>
+        <img id="window_top_bar" src="assets/window_top_bar.png" hidden>
+        <img id="window_top_left_corner" src="assets/window_top_left_corner.png" hidden>
+        <img id="window_top_right_bar" src="assets/window_top_right_bar.png" hidden>
         
-
-        <video id="parrot_source" src="assets/parrot.mp4" muted loop></video>
+        <video id="parrot_source" src="assets/parrot.mp4" muted loop hidden></video>
         
         <button id="tiktok_button" class="button">
             <img src="assets/tiktok.png"></button>
@@ -99,10 +103,8 @@
         <button id="birdbutton" class="button">
             <img src="assets/birdbutton.png"></button>
 
-
-
     </div>
-    </body>
 
+</body>
 </html>
 
