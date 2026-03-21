@@ -60,52 +60,6 @@ const pos_right = 2560
 // display page after content is loaded
 document.addEventListener("DOMContentLoaded", () => {
 
-const bg_image = document.getElementById("bg")
-const bar_image = document.getElementById("bar")
-const wicon_image = document.getElementById("wicon")
-const startbar_image = document.getElementById("startbar")
-const window1 = document.getElementById("window1")
-
-const profile_image = document.getElementById("profile")
-const heart_image = document.getElementById("heart")
-const comment_image = document.getElementById("comment")
-const share_image = document.getElementById("share")
-const tom_image = document.getElementById("tom")
-const ad_image = document.getElementById("ad")
-const youtube_image = document.getElementById("youtube")
-const lightbar_image = document.getElementById("lightbar")
-const virus_image = document.getElementById("virus")
-const game_bird_image = document.getElementById("game_bird")
-const game_main_menu_image = document.getElementById("game_main_menu")
-const sunny_logo_image = document.getElementById("sunny_logo")
-const flappy_image = document.getElementById("flappy")
-const bricks_image = document.getElementById("bricks")
-
-//  window images
-const minimize_image = document.getElementById("minimize")
-const maximize_image = document.getElementById("maximize")
-const close_image = document.getElementById("close")
-
-const window_bottom_bar = document.getElementById("window_bottom_bar")
-const window_bottom_left_bar = document.getElementById("window_bottom_left_bar")
-const window_bottom_right_bar = document.getElementById("window_bottom_right_bar")
-const window_left_bar = document.getElementById("window_left_bar")
-const window_right_bar = document.getElementById("window_right_bar")
-const window_top_bar = document.getElementById("window_top_bar")
-const window_top_left_corner = document.getElementById("window_top_left_corner")
-const window_top_right_bar = document.getElementById("window_top_right_bar")
-
-//const  = document.getElementById("")
-
-// get button elements and default to hidden
-const video1 = document.getElementById("parrot_source")
-const tiktok_button = document.getElementById("tiktok_button")
-const explorer_button = document.getElementById("explorer_button")
-const tom_button = document.getElementById("tom_button")
-const screenclick = document.getElementById("screenclick")
-const birdbutton = document.getElementById("birdbutton")
-const bird_play_button = document.getElementById("main_menu_button")
-
 function background() {
     os.filter = "brightness(90%)"
     os.drawImage(bg_image, pos_left, pos_top, max_width, max_height)
