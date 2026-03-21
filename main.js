@@ -174,7 +174,7 @@ function show_explorer(){
     }
 }
 
-const select_clock_height = 60
+/* const select_clock_height = 60
 const clock_position = global.pos_bot - select_clock_height
 
 let current_time 
@@ -193,7 +193,7 @@ function clock(){
         update_time()
         elapsed_ms = 0
     }
-}
+} */
 
 
 let is_tom_visible = false
