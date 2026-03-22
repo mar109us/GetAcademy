@@ -1,10 +1,10 @@
 let activeWindows = []
 
 class DesktopWindow {
-    constructor(title, top, left, width, height) {
+    constructor(title, left, top, width, height) {
         this.title = title
-        this.x = top
-        this.y = left
+        this.x = left
+        this.y = top
         this.w = width
         this.h = height
 
@@ -29,6 +29,18 @@ render() {
     let ctx = this.ctx
     let w = this.w
     let h = this.h
+    let x = this.x
+    let y = this.y
+
+    let pos_x = 4
+    let pos_y = 32
+
+    let size_x = this.canvas.width - 8
+    let size_y = this.canvas.height - 36
+
+    ctx.fillRect(pos_x, pos_y, size_x, size_y)
+
+
 
     if (global.mouse_y < this.y ||
         global.mouse_y > this.y + 32 ||
@@ -55,6 +67,31 @@ render() {
         this.canvas.style.left = `${this.x}px`
         this.canvas.style.top = `${this.y}px`
     }
+
+    if (this.move_window == false) {
+
+        if (this.x < window.global.pos_left) {
+            this.x = 0
+            this.canvas.style.left = `0px`
+        }
+
+        if (this.x + this.w > window.innerWidth) {
+            this.x = window.innerWidth - this.w
+            this.canvas.style.left = `${window.innerWidth - this.w}px`
+        }
+
+        if (this.y < window.global.pos_top) {
+            this.y = 0
+            this.canvas.style.top = `0px`
+        }
+
+        if (this.y + this.h > window.innerHeight - taskbar_height) {
+            this.y = window.innerHeight - this.h - 30 // hardcoded number because im doing something dumb in os_ui.js
+            this.canvas.style.top = `${window.innerHeight - this.h - 30}px` // hardcoded number because im doing something dumb in os_ui.js
+        }     
+    }
+
+console.log(window.innerHeight)
 
     ctx.drawImage(window_bottom_bar, 4, h - 4, w - 8, 5)
     ctx.drawImage(window_bottom_left_bar, -1, h - 4, 5, 5)

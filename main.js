@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-const window1 = new DesktopWindow("Effects", 200, 200, 400, 300);
+const window1 = new DesktopWindow("You shall not pass", 200, 200, 500, 500)
 
 
 
