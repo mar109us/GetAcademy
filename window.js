@@ -30,16 +30,9 @@ render() {
     let w = this.w
     let h = this.h
 
-    let pos_x = 4
-    let pos_y = 32
+    let focus_window = true
 
-    let current_pos_x = this.x
-    let current_pos_y = this.y
 
-    let size_x = this.canvas.width - 8
-    let size_y = this.canvas.height - 36
-
-    ctx.fillRect(pos_x, pos_y, size_x, size_y)
 
 
 
@@ -52,6 +45,9 @@ render() {
     else {
         if (global.mouse_down == true) {
             this.move_window = true
+            if (global.mouse_down == false) {
+                focus_window = false
+            }
         }
 
         else {
@@ -92,6 +88,22 @@ render() {
         }     
     }
 
+    let pos_x = 4
+    let pos_y = 32
+
+    let current_pos_x = this.x
+    let current_pos_y = this.y
+
+    let size_x = this.canvas.width - 8
+    let size_y = this.canvas.height - 36
+
+    ctx.fillRect(pos_x, pos_y, size_x, size_y)
+
+
+    if (typeof this.onRenderContent === 'function') {
+        this.onRenderContent(ctx, focus_window, current_pos_x, current_pos_y, pos_x, pos_y, size_x, size_y)
+    }
+
     ctx.drawImage(window_bottom_bar, 4, h - 4, w - 8, 5)
     ctx.drawImage(window_bottom_left_bar, -1, h - 4, 5, 5)
     ctx.drawImage(window_bottom_right_bar, w - 4, h - 4, 5, 5)
@@ -108,10 +120,6 @@ render() {
     ctx.drawImage(minimize_image, w - 84, 4, 25, 25)
     ctx.drawImage(maximize_image, w - 57, 4, 25, 25)
     ctx.drawImage(close_image, w - 30, 4, 25, 25)
-
-        if (typeof this.onRenderContent === 'function') {
-            this.onRenderContent(ctx, current_pos_x, current_pos_y, pos_x, pos_y, size_x, size_y)
-        }
 
 }
 
