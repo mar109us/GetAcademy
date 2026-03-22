@@ -9,6 +9,8 @@ window.global = {
     mouse_y: 0,
     mouse_down: false,
 
+    focus_wordpad: false,
+
 };
 
 global.pos_right = global.max_width

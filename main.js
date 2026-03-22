@@ -31,10 +31,11 @@ onmouseup = function() {
     global.mouse_down = false
 }
 
-document.addEventListener('keydown', logKey);
+document.addEventListener('keydown', logKey)
 
 function logKey(e) {
-    if (`${e.code}` === "KeyL") {
+
+    if (`${e.code}` === "KeyL" && global.focus_wordpad === false) {
         screensaver_timer = screensaver_set_init
     }
 }

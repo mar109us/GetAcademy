@@ -42,7 +42,6 @@ render() {
 
         if (global.mouse_down == true) {
             this.move_window = true
-            focus_window = true
         }
 
         else {
