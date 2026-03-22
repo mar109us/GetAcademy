@@ -30,7 +30,7 @@ render() {
     let w = this.w
     let h = this.h
 
-    let focus_window = true
+    let focus_window = false
 
 
 
@@ -45,9 +45,7 @@ render() {
     else {
         if (global.mouse_down == true) {
             this.move_window = true
-            if (global.mouse_down == false) {
-                focus_window = false
-            }
+            focus_window = true
         }
 
         else {
