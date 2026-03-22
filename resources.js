@@ -45,3 +45,5 @@ const tom_button = image_link("tom_button")
 const screenclick = image_link("screenclick")
 const birdbutton = image_link("birdbutton")
 const bird_play_button = image_link("main_menu_button")
+
+const wordpad_button = image_link("wordpad_button")
