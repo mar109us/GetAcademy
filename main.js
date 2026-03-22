@@ -53,6 +53,7 @@ function update(){
         screensaver_loop()
         screen_clicked()
 
+        hide_wordpad()
         ui_visibility.style.visibility = "hidden"
         screenclick_visibility.style.visibility = "visible"
         rotate_timer += fps_60
