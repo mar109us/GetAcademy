@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-const alertWindow = new DesktopWindow("Error!", 200, 200, 400, 300);
+const window1 = new DesktopWindow("Effects", 200, 200, 400, 300);
 
 
 

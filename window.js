@@ -75,10 +75,11 @@ render() {
 
 }
 
+// Inside your DesktopWindow class...
 drawTitle(text, x, y) {
-    this.ctx.fillStyle = "white"
-    this.ctx.font = "14px Arial"
-    this.ctx.fillText(text, x, y)
+    // Pass 'this.ctx' so the font function knows which window to draw on
+    
+    window_style(this.ctx, text, x, y);
 }
 
 }
