@@ -199,7 +199,7 @@ function screensaver_loop() {
 }
 
 function screensaver_click() {
-    screenclick.addEventListener("click", () => {global.screensaver_active = !global.screensaver_active})
+    addEventListener("click", () => {global.screensaver_active = !global.screensaver_active})
 }
 
 function screen_clicked() {
