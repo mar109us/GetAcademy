@@ -15,3 +15,4 @@ window.global = {
 
 global.pos_right = global.max_width
 global.pos_bot = global.max_height
+
