@@ -9,16 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //const double_click_time = 500
 
-
-
-const window1 = new DesktopWindow("You shall not pass", 200, 200, 500, 500)
-
-
+const window_test = new DesktopWindow("You shall not pass", 200, 200, 500, 500)
+window_test.onRenderContent = window_test_function
 
 const fps_60 = 1000 / 60
 setInterval(update, fps_60)
-
-
 
 onmousemove = function(e) {
     global.mouse_x = e.clientX

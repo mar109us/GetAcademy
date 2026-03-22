@@ -29,11 +29,12 @@ render() {
     let ctx = this.ctx
     let w = this.w
     let h = this.h
-    let x = this.x
-    let y = this.y
 
     let pos_x = 4
     let pos_y = 32
+
+    let current_pos_x = this.x
+    let current_pos_y = this.y
 
     let size_x = this.canvas.width - 8
     let size_y = this.canvas.height - 36
@@ -91,8 +92,6 @@ render() {
         }     
     }
 
-console.log(window.innerHeight)
-
     ctx.drawImage(window_bottom_bar, 4, h - 4, w - 8, 5)
     ctx.drawImage(window_bottom_left_bar, -1, h - 4, 5, 5)
     ctx.drawImage(window_bottom_right_bar, w - 4, h - 4, 5, 5)
@@ -110,14 +109,20 @@ console.log(window.innerHeight)
     ctx.drawImage(maximize_image, w - 57, 4, 25, 25)
     ctx.drawImage(close_image, w - 30, 4, 25, 25)
 
+        if (typeof this.onRenderContent === 'function') {
+            this.onRenderContent(ctx, current_pos_x, current_pos_y, pos_x, pos_y, size_x, size_y)
+        }
+
 }
 
-// Inside your DesktopWindow class...
+
+
 drawTitle(text, x, y) {
-    // Pass 'this.ctx' so the font function knows which window to draw on
     
     window_style(this.ctx, text, x, y);
 }
+
+
 
 }
 
