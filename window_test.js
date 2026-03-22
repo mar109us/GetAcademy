@@ -1,6 +1,8 @@
+const wordpad_window = new DesktopWindow("WordPad", 400, 50, 600, 500)
 
+wordpad_window.onRenderContent = wordpad
 
-function window_test_function(ctx, focus_window, current_pos_x, current_pos_y, pos_x, pos_y, size_x, size_y) {
+function wordpad(ctx, focus_window, current_pos_x, current_pos_y, pos_x, pos_y, size_x, size_y) {
 
         function getValue() {
 
@@ -29,7 +31,6 @@ function window_test_function(ctx, focus_window, current_pos_x, current_pos_y, p
             textarea.style.background = "none"
 
             textarea.style.fontSize = "20px"
-
 
             textarea.style.marginLeft = `${text_margin}px`
 

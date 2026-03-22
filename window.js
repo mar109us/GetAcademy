@@ -32,10 +32,6 @@ render() {
 
     let focus_window = false
 
-
-
-
-
     if (global.mouse_y < this.y ||
         global.mouse_y > this.y + 32 ||
         global.mouse_x < this.x + 5 ||
@@ -43,6 +39,7 @@ render() {
     }
 
     else {
+
         if (global.mouse_down == true) {
             this.move_window = true
             focus_window = true
@@ -56,6 +53,7 @@ render() {
     }
 
     if (this.move_window == true) {
+
         this.x = global.mouse_x - (this.w / 2)
         this.y = global.mouse_y - 16
 
@@ -99,7 +97,16 @@ render() {
 
 
     if (typeof this.onRenderContent === 'function') {
-        this.onRenderContent(ctx, focus_window, current_pos_x, current_pos_y, pos_x, pos_y, size_x, size_y)
+        this.onRenderContent(
+            ctx,
+            focus_window,
+            current_pos_x,
+            current_pos_y,
+            pos_x,
+            pos_y,
+            size_x,
+            size_y
+        )
     }
 
     ctx.drawImage(window_bottom_bar, 4, h - 4, w - 8, 5)
@@ -121,14 +128,9 @@ render() {
 
 }
 
-
-
 drawTitle(text, x, y) {
-    
     window_style(this.ctx, text, x, y);
 }
-
-
 
 }
 
