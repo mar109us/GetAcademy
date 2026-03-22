@@ -1,10 +1,10 @@
 let activeWindows = [];
 
 class DesktopWindow {
-  constructor(title, x, y, width, height) {
+  constructor(title, top, left, width, height) {
     this.title = title;
-    this.x = x;
-    this.y = y;
+    this.x = top;
+    this.y = left;
     this.w = width;
     this.h = height;
 
@@ -23,10 +23,35 @@ class DesktopWindow {
     activeWindows.push(this);
   }
 
+  
+
   render() {
-    const ctx = this.ctx;
-    const w = this.w;
-    const h = this.h;
+    let ctx = this.ctx;
+    let w = this.w;
+    let h = this.h;
+    let x = this.x;
+    let y = this.y;
+
+    if (global.mouse_y < this.y ||
+        global.mouse_y > this.y + 32 ||
+        global.mouse_x < this.x + 5 ||
+        global.mouse_x > this.x + this.w - 84) {
+    }
+
+    else {
+        /* console.log("on bar") */
+
+        if (global.mouse_down == true) {
+            this.canvas.style.left = `${global.mouse_x}px`
+            this.canvas.style.top = `${global.mouse_y}px`
+            console.log("click on bar")
+        }
+        else {
+            this.canvas.style.left = `${this.x}px`
+            this.canvas.style.top = `${this.y}px`
+            console.log("no click on bar")
+        }
+    }
 
     ctx.drawImage(window_bottom_bar, 4, h - 4, w - 8, 5);
     ctx.drawImage(window_bottom_left_bar, -1, h - 4, 5, 5);
@@ -37,8 +62,6 @@ class DesktopWindow {
 
     ctx.drawImage(window_top_bar, 5, 0, w - 10, 32);
 
-    console.log(global.mouse_x)
-
     ctx.drawImage(window_top_left_corner, 0, 0, 5, 32);
     ctx.drawImage(window_top_right_bar, w - 5, 0, 5, 32);
 
@@ -46,6 +69,7 @@ class DesktopWindow {
     ctx.drawImage(minimize_image, w - 84, 4, 25, 25);
     ctx.drawImage(maximize_image, w - 57, 4, 25, 25);
     ctx.drawImage(close_image, w - 30, 4, 25, 25);
+
   }
 
   drawTitle(text, x, y) {
@@ -54,6 +78,7 @@ class DesktopWindow {
     this.ctx.fillText(text, x, y);
   }
 }
+
 
 
 

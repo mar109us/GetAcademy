@@ -7,6 +7,7 @@ window.global = {
 
     mouse_x: 0,
     mouse_y: 0,
+    mouse_down: false,
 
 };
 

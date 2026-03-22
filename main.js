@@ -19,6 +19,7 @@ const fps_60 = 1000 / 60
 setInterval(update, fps_60)
 
 
+
 onmousemove = function(e) {
     global.mouse_x = e.clientX
     global.mouse_y = e.clientY
@@ -26,8 +27,14 @@ onmousemove = function(e) {
     screensaver_timer = 0
     elapsed_ms = 0
     global.screensaver_active = false
+}
 
+onmousedown = function() {
+    global.mouse_down = true
+}
 
+onmouseup = function() {
+    global.mouse_down = false
 }
 
 document.addEventListener('keydown', logKey);
