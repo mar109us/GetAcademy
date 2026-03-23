@@ -6,11 +6,9 @@ const textarea = document.getElementById("myTextarea")
 wordpad_button.addEventListener("click", () => {global.wordpad_visible = !global.wordpad_visible})
 
 textarea.addEventListener('focus', () => {global.focus_wordpad = true
-    console.log(global.focus_wordpad)
 })
 
 textarea.addEventListener('focusout', () => {global.focus_wordpad = false
-    console.log(global.focus_wordpad)
 })
 
 function show_wordpad() {

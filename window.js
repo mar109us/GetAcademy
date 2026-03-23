@@ -9,6 +9,7 @@ class DesktopWindow {
         this.h = height
 
         this.canvas = document.createElement('canvas')
+
         this.canvas.width = this.w
         this.canvas.height = this.h
         this.ctx = this.canvas.getContext('2d')
@@ -32,10 +33,6 @@ render() {
     let h = this.h
 
     let focus_window = false
-
-
-
-console.log(this.grab_window)
 
     if (this.move_window == true) {
 
@@ -79,6 +76,8 @@ console.log(this.grab_window)
         
         if (global.mouse_down == true) {
             this.grab_window = false
+            this.canvas.style.zIndex = 1000
+                    console.log(this.canvas.style.zIndex)
         }
         else {
             this.grab_window = true
@@ -90,6 +89,13 @@ console.log(this.grab_window)
 
         if (global.mouse_down == true && this.grab_window == true) {
             this.move_window = true
+            this.canvas.focus = true
+
+                if (this.canvas.focus == true) {
+                    this.canvas.style.zIndex = 1001
+                    console.log(this.canvas.style.zIndex)
+                }
+
         }
 
         else {
@@ -141,7 +147,26 @@ console.log(this.grab_window)
     ctx.drawImage(maximize_image, w - 57, 4, 25, 25)
     ctx.drawImage(close_image, w - 30, 4, 25, 25)
 
+
+
+/*     if (this.canvas.style.zIndex > 1) {
+        this.canvas.style.zIndex = 1001
+    }
+    console.log(this.canvas.style.zIndex) */
+
+/*     if (this.canvas.focus == true) {
+        console.log("focused")
+    } */
+    
+
+
+
+
+
 }
+
+
+
 
 drawTitle(text, x, y) {
     window_style(this.ctx, text, x, y);
