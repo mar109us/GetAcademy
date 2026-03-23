@@ -19,6 +19,7 @@ class DesktopWindow {
         this.canvas.style.zIndex = "1000"
 
         this.move_window = false
+        this.grab_window = false
 
         document.body.appendChild(this.canvas)
 
@@ -32,24 +33,9 @@ render() {
 
     let focus_window = false
 
-    if (global.mouse_y < this.y ||
-        global.mouse_y > this.y + 32 ||
-        global.mouse_x < this.x + 5 ||
-        global.mouse_x > this.x + this.w - 84) {
-    }
 
-    else {
 
-        if (global.mouse_down == true) {
-            this.move_window = true
-        }
-
-        else {
-            this.move_window = false
-            this.canvas.style.left = `${this.x}px`
-            this.canvas.style.top = `${this.y}px`
-        }
-    }
+console.log(this.grab_window)
 
     if (this.move_window == true) {
 
@@ -60,6 +46,8 @@ render() {
         this.canvas.style.top = `${this.y}px`
     }
 
+
+        // out of bounds logic
     if (this.move_window == false) {
 
         if (this.x < window.global.pos_left) {
@@ -81,6 +69,34 @@ render() {
             this.y = window.innerHeight - this.h - 30 // hardcoded number because im doing something dumb in os_ui.js
             this.canvas.style.top = `${window.innerHeight - this.h - 30}px` // hardcoded number because im doing something dumb in os_ui.js
         }     
+    }
+
+    // area outside of bar
+    if (global.mouse_y < this.y ||
+        global.mouse_y > this.y + 32 ||
+        global.mouse_x < this.x + 5 ||
+        global.mouse_x > this.x + this.w - 84) {
+        
+        if (global.mouse_down == true) {
+            this.grab_window = false
+        }
+        else {
+            this.grab_window = true
+        }
+    }
+
+    // if inside bar
+    else {
+
+        if (global.mouse_down == true && this.grab_window == true) {
+            this.move_window = true
+        }
+
+        else {
+            this.move_window = false
+            this.canvas.style.left = `${this.x}px`
+            this.canvas.style.top = `${this.y}px`
+        }
     }
 
     let pos_x = 4
