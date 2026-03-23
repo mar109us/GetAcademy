@@ -14,8 +14,8 @@ window.global = {
 
     // Switches for testing
 
-/*     wordpad_visible: false, */
-    wordpad_visible: true,
+    wordpad_visible: false,
+/*     wordpad_visible: true, */
 
 
 
