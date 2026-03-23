@@ -3,10 +3,10 @@
 
 # Web based Windows XP imitation 
 
-<img width="500" src="https://github.com/user-attachments/assets/f74a1c84-fcc7-4845-9383-2d5084ee1713" />
-<img width="500" src="https://github.com/user-attachments/assets/361af3f1-8ea9-425f-a9fe-2a90b7f14650" />
-<img width="500" src="https://github.com/user-attachments/assets/fcc35a87-a1c6-448f-b336-5c133121205c" />
-<img width="500" src="https://github.com/user-attachments/assets/43846289-1179-43e6-a229-546d5a900b50" />
+<img width="400" src="https://github.com/user-attachments/assets/f74a1c84-fcc7-4845-9383-2d5084ee1713" />
+<img width="400" src="https://github.com/user-attachments/assets/361af3f1-8ea9-425f-a9fe-2a90b7f14650" />
+<img width="400" src="https://github.com/user-attachments/assets/fcc35a87-a1c6-448f-b336-5c133121205c" />
+<img width="400" src="https://github.com/user-attachments/assets/43846289-1179-43e6-a229-546d5a900b50" />
 
 > This project was started as a solo project during a one week intro course to JavaScript, but quickly turned into a wider scope with a cold dive into building system architecture and window management using the provided curriculum as a starting point.
 > 
