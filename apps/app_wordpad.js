@@ -25,7 +25,7 @@ function hide_wordpad() {
             textarea.focus()
         } */
 
-function wordpad(ctx, focus_window, current_pos_x, current_pos_y, pos_x, pos_y, size_x, size_y) {
+function wordpad(ctx, focus_window, current_pos_x, current_pos_y, pos_x, pos_y, size_x, size_y, currentzindex) {
 
     if (global.wordpad_visible) {
         show_wordpad()
@@ -66,7 +66,7 @@ function wordpad(ctx, focus_window, current_pos_x, current_pos_y, pos_x, pos_y, 
 
         textarea.style.marginLeft = `${text_margin}px`
 
-        
+        console.log(currentzindex, "wordpad")
 
     }
 }
