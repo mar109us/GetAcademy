@@ -1,4 +1,4 @@
-const wordpad_window = new DesktopWindow("WordPad", 400, 50, 600, 500)
+const wordpad_window = new DesktopWindow("Document - WordPad", 400, 150, 500, 400)
 wordpad_window.onRenderContent = wordpad
 
 const textarea = document.getElementById("myTextarea")
@@ -38,14 +38,22 @@ function wordpad(ctx, focus_window, current_pos_x, current_pos_y, pos_x, pos_y, 
 
     function getValue() {
 
-        ctx.fillStyle='lightgray'
+        const wordpad_menu_background = 70
+
+        ctx.fillStyle='white'
         
         ctx.fillRect(pos_x, pos_y, size_x, size_y)
 
+        ctx.fillStyle='lightgray'
 
+        ctx.fillRect(pos_x, pos_y, size_x, wordpad_menu_background)
 
-        const text_margin = 20
-        const text_margin_right = 10
+        ctx.font = "13px Tahoma"
+        ctx.fillStyle = "black"
+        ctx.fillText("File   Edit   View   Insert   Format   Help", pos_x + 10, pos_y + 20)
+
+        const text_margin = 10
+        const text_margin_right = 5
 
         textarea.style.display = "block"
         textarea.style.position = "absolute"
@@ -54,10 +62,10 @@ function wordpad(ctx, focus_window, current_pos_x, current_pos_y, pos_x, pos_y, 
         textarea.style.color = "black"
 
         textarea.style.left = `${current_pos_x + pos_x}px`
-        textarea.style.top = `${current_pos_y + pos_y}px`
+        textarea.style.top = `${current_pos_y + pos_y + wordpad_menu_background + 5}px`
 
         textarea.style.width = `${size_x - pos_x - (text_margin_right * 2)}px`
-        textarea.style.height = `${size_y - pos_x}px`
+        textarea.style.height = `${size_y - pos_x - wordpad_menu_background - 5}px`
         textarea.style.border = "none"
         textarea.style.outline = "none"
         textarea.style.background = "none"
