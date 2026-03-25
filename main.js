@@ -1,9 +1,6 @@
 const os_canvas_link = document.getElementById("os_canvas")
 const os = os_canvas_link.getContext("2d")
 
-const g = document.getElementById("game_canvas")
-const canvas_name = g.getContext("2d")
-
 // display page after content is loaded
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -73,7 +70,6 @@ function update(){
         show_explorer()
         show_tom()
         show_tiktok()
-        bird_game_logic()
 
         activeWindows.forEach(DesktopWindow => {
             DesktopWindow.render()
@@ -89,4 +85,5 @@ bird_desktop_button_click()
 bird_play_button_click()
 hide_bird_menu()
 wordpad()
+bird_content()
 })

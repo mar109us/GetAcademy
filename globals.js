@@ -17,6 +17,7 @@ window.global = {
     wordpad_visible: false,
 /*     wordpad_visible: true, */
 
+/*     bird_desktop_clicked: true, */
 
 
 };

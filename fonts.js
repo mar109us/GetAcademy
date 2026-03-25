@@ -25,7 +25,7 @@ function text_style_3(text, x, y) {
     os.fillText(text, x, y)
 }
 
-function text_style_window(text, x, y) {
+/* function text_style_window(text, x, y) {
     canvas_name.font = "15px Tahoma"
     canvas_name.strokeStyle = "black"
     canvas_name.lineWidth = 0.8
@@ -41,7 +41,7 @@ function text_style_game(text, x, y) {
     canvas_name.strokeText(text, x + 0, y + 0)
     canvas_name.fillStyle = "white"
     canvas_name.fillText(text, x, y)
-}
+} */
 
 /* function window_style(text, x, y) {
     canvas_name.font = "40px Tahoma"
