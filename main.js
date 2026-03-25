@@ -75,8 +75,8 @@ function update(){
         show_tiktok()
         bird_game_logic()
 
-        activeWindows.forEach(win => {
-            win.render()
+        activeWindows.forEach(DesktopWindow => {
+            DesktopWindow.render()
         })
         
     }

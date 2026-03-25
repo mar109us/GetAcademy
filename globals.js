@@ -1,4 +1,5 @@
 window.global = {
+
     max_width: 2560,
     max_height: 1440,
     pos_top: 0,
@@ -10,6 +11,13 @@ window.global = {
     mouse_down: false,
 
     focus_wordpad: false,
+
+    // Switches for testing
+
+    wordpad_visible: false,
+/*     wordpad_visible: true, */
+
+
 
 };
 
