@@ -13,7 +13,7 @@
 > My personal target was to present a Flappy Bird clone within the OS imitation, where the Flappy Bird clone was the end-goal of the course
 
 ## Highlights
-* **No Dependencies:**
+* **No Dependencies**
 * **Consistent ~60fps**
 * **Modular Window Manager:** A custom-built system for handling modular windows
 * **Screensaver Graphics Generator**
