@@ -31,8 +31,6 @@ const jump_height = 40
 const game_pos_x = 4
 const game_pos_y = 32
 
-
-
 const game_size_x = 500 - 4
 const game_size_y = 400 - 36
 
@@ -127,8 +125,6 @@ function gravity() {
         character_position_y += game_speed
     }
 }
-
-
 
 let background1_x = game_pos_x
 let background2_x = game_size_x

@@ -5,11 +5,9 @@ const textarea = document.getElementById("myTextarea")
 
 wordpad_button.addEventListener("click", () => {global.wordpad_visible = !global.wordpad_visible})
 
-textarea.addEventListener('focus', () => {global.focus_wordpad = true
-})
+textarea.addEventListener('focus', () => {global.focus_wordpad = true})
 
-textarea.addEventListener('focusout', () => {global.focus_wordpad = false
-})
+textarea.addEventListener('focusout', () => {global.focus_wordpad = false})
 
 function show_wordpad() {
     wordpad_window.canvas.style.display = "block"
@@ -20,10 +18,6 @@ function hide_wordpad() {
     wordpad_window.canvas.style.display = "none"
     textarea.style.display = "none"
 }
-
-/* if (focus_window == true) {
-            textarea.focus()
-        } */
 
 function wordpad(ctx, focus_window, current_pos_x, current_pos_y, pos_x, pos_y, size_x, size_y, currentzindex) {
 

@@ -17,8 +17,6 @@ window.global = {
     wordpad_visible: false,
 /*     wordpad_visible: true, */
 
-
-
 };
 
 global.pos_right = global.max_width

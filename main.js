@@ -7,10 +7,6 @@ const canvas_name = g.getContext("2d")
 // display page after content is loaded
 document.addEventListener("DOMContentLoaded", () => {
 
-//const double_click_time = 500
-
-
-
 const fps_60 = 1000 / 60
 setInterval(update, fps_60)
 
@@ -43,12 +39,9 @@ function logKey(e) {
 let ui_visibility = document.getElementsByClassName('ui')[0]
 let screenclick_visibility = document.getElementsByClassName('screenclick')[0]
 
-
-
 function update(){ 
     elapsed_ms += fps_60
     screensaver_timer += fps_60
-
 
     if (screensaver_timer > screensaver_set_init) {
         screensaver_loop()

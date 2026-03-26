@@ -54,7 +54,7 @@ class DesktopWindow {
             this.x_offset = null;
         }    
 
-            // out of bounds logic
+        // out of bounds logic
         if (this.move_window == false) {
 
             if (this.x < window.global.pos_left) {
@@ -116,7 +116,6 @@ class DesktopWindow {
         if (this.canvas.focus == false) {
             this.canvas.style.zIndex = 1000
         }
-
 
         let currentzindex = this.canvas.style.zIndex
         

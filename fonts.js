@@ -53,7 +53,6 @@ function text_style_game(text, x, y) {
 } */
 
 function window_style(ctx, text, x, y) {
-    // Only set these if they aren't already set to avoid the 75ms lag
     if (ctx.font !== "normal 15px Trebuchet MS") ctx.font = "normal 15px Trebuchet MS";
     if (ctx.strokeStyle !== "black") ctx.strokeStyle = "black";
     if (ctx.lineWidth !== 1) ctx.lineWidth = 1;
