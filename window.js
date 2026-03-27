@@ -68,8 +68,17 @@ class DesktopWindow {
             }
 
             if (this.y < window.global.pos_top) {
-                this.y = 0
+                this.x = 5
+                this.canvas.style.left = `0px`
+
+                this.y = 5
                 this.canvas.style.top = `0px`
+
+                this.w = window.innerWidth - 10
+                this.canvas.width = window.innerWidth - 10
+                
+                this.h = window.innerHeight - 65
+                this.canvas.height = window.innerHeight - 65
             }
 
             if (this.y + this.h > window.innerHeight - taskbar_height) {
@@ -77,6 +86,8 @@ class DesktopWindow {
                 this.canvas.style.top = `${window.innerHeight - this.h - 30}px` // hardcoded number because im doing something dumb in os_ui.js
             }     
         }
+
+        
 
         // area outside of bar
         if (global.mouse_y < this.y ||
@@ -94,7 +105,7 @@ class DesktopWindow {
             }
         }
 
-        // if inside bar
+        // area inside of bar
         else {
 
             if (global.mouse_down == true && this.grab_window == true) {
@@ -111,10 +122,12 @@ class DesktopWindow {
 
         if (this.canvas.focus == true) {
             this.canvas.style.zIndex = 1001
+
         }
 
         if (this.canvas.focus == false) {
             this.canvas.style.zIndex = 1000
+    /*     this.canvas.style.pointerEvents = `none` */
         }
 
         let currentzindex = this.canvas.style.zIndex
@@ -129,20 +142,6 @@ class DesktopWindow {
         let size_y = this.canvas.height - 36
 
         ctx.fillRect(pos_x, pos_y, size_x, size_y)
-
-        if (typeof this.onRenderContent === 'function') {
-            this.onRenderContent(
-                ctx,
-                focus_window,
-                current_pos_x,
-                current_pos_y,
-                pos_x,
-                pos_y,
-                size_x,
-                size_y,
-                currentzindex
-            )
-        }
 
         ctx.drawImage(window_bottom_bar, 4, h - 4, w - 8, 5)
         ctx.drawImage(window_bottom_left_bar, -1, h - 4, 5, 5)
@@ -160,9 +159,24 @@ class DesktopWindow {
         ctx.drawImage(minimize_image, w - 84, 4, 25, 25)
         ctx.drawImage(maximize_image, w - 57, 4, 25, 25)
         ctx.drawImage(close_image, w - 30, 4, 25, 25)
+
+        if (typeof this.onRenderContent === 'function') {
+            this.onRenderContent(
+                ctx,
+                focus_window,
+                current_pos_x,
+                current_pos_y,
+                pos_x,
+                pos_y,
+                size_x,
+                size_y,
+                currentzindex
+            )
+        }
     }
 
     drawTitle(text, x, y) {
         window_style(this.ctx, text, x, y);
     }
+    
 }
